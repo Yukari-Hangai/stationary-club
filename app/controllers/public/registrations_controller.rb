@@ -39,7 +39,6 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -60,6 +59,13 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  
+  def after_sign_in_path_for(resource)
+    root_path#いったんトップにしておく　マイページに遷移/users/my_page
+  end
+  
+
+  
   protected
 
   def configure_permitted_parameters

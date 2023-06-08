@@ -1,0 +1,15 @@
+<h1>編集画面</h1>
+
+<%= form_with model: @post, url: post_path, method: :patch do |f| %>
+  <table class="table">
+    <tr>
+      <th>投稿画像</th>
+      <th><%= f.file_field :image, accept: "image/*" %></th>
+    </tr>
+    <tr>
+      <th>本文</th>
+      <th><%= f.text_area :text %></th>
+    </tr>
+  </table>
+    <%= f.submit '保存' %>
+<% end %>

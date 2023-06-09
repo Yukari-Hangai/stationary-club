@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    attributes:
+      post:
+        image: "画像"
+        text: "本文"
+    errors:
+      messages:
+        blank: "を入力、またはアップロードしてください"

@@ -17,7 +17,7 @@ scope module: :public do
   get 'quit/:name' => 'homes#quit', as: 'confirm_quit'
   patch ':id/out/:name' => 'homes#out', as: 'out_user'
   
-  resources :posts, only: [:new, :create, :index, :edit, :update]
+  resources :posts, only: [:new, :create, :index, :edit, :update, :destroy]
 end
 
 namespace :admin do

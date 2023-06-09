@@ -1,14 +1,39 @@
 @use '~bootstrap/scss/bootstrap';
 
-.sidebar {
-  background-color: rgba(255, 255, 255, 0.2);
+.touka {
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
-.logo-icon{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.logo_icon{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-.logo-icon>p {
-  width: 49%;
+.logo_icon>p {
+    width: 49%;
+}
+
+h1 {
+    margin:  0;                 /* デフォルトCSS打ち消し */
+    font-size:  24px;           /* 文字サイズ指定 */
+    position:  relative;        /* 位置調整 */
+    font-weight:  normal;       /* 文字の太さ調整 */
+    display:  inline-block;     /* インラインブロックにする */
+    padding:  10px;             /* 余白指定 */
+    margin-bottom: 15px;        /* 周りの余白指定 */
+    border-radius:  2px;        /* 角丸指定 */
+}
+
+h1:before {
+    content:  '';               /* 空白の要素を作る */
+    background-color: #b3b3b3;  /* 背景色指定 */
+    display:  block;            /* ブロック要素にする */
+    position:  absolute;        /* 位置調整 */
+    left: 50%;                  /* 位置調整 */
+    height: 60%;                /* 高さ指定 */
+    top: 26%;                   /* 位置調整 */
+    z-index:  -1;               /* 重なり調整 */
+    width: 46%;                 /* 幅指定 */
+    box-shadow: 0 0 8px 8px #b3b3b3;/* 影指定 */
+    transform: rotate(3deg);    /* 回転 */
 }

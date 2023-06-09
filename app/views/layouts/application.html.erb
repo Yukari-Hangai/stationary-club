@@ -15,10 +15,10 @@
   <body>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-3 sticky-left vh-100">
-          
-          <div class="sidebar" style="background-image: url(<%= asset_path('sidebar.jpg') %>); background-size: cover; ">
-              <div class="logo-icon">
+          　
+        <div class="sidebar col-3 sticky-left vh-100 px-0" style="background-image: url(<%= asset_path('sidebar.jpg') %>); background-size: cover;">
+          <div class="touka vh-100 mx-0">
+              <div class="logo_icon mx-5">
                 <p class="logo"><%= image_tag 'logo.png', size: '150x150' %></p>
                 <% if user_signed_in? %>
                   <p class="post_icon">
@@ -30,38 +30,41 @@
                 <% end %>
               </div>
               <% if user_signed_in? %>
-                <div class="logo-icon">
-                  <p class="icon"><%= "ログインユーザーアイコン" %></p>
-                  <p><%= "ユーザーID ： " %><%= current_user.id %><br>
-                     <%= "名前 ： " %><%= current_user.name %>
-                  </p>
-                </div>
-                <div class="menu">
-                  <%= "フォロー一覧" %>
-                  <%= "フォロワー一覧" %>
-                  <%= "投稿一覧" %>
-                </div>
-                <div class="search">
-                  <%= "検索窓" %>
-                </div>
-                <div class="logout">
-                  <%= link_to "ログアウト", destroy_user_session_path, class: 'nav-link', method: :delete %>
-                </div>
+              <div class="logo_icon mx-5">
+                <p class="icon"><%= "ログインユーザーアイコン" %></p>
+                <p><%= "ユーザーID ： " %><%= current_user.id %><br>
+                   <%= "名前 ： " %><%= current_user.name %>
+                </p>
+              </div>
+                <div class="menu mx-5">
+                <%= "フォロー一覧" %>
+                <%= "フォロワー一覧" %>
+                <%= "投稿一覧" %>
+              </div>
+              <div class="search mx-5">
+                <%= "検索窓" %>
+              </div>
+              <div class="logout mx-5">
+                <%= link_to "ログアウト", destroy_user_session_path, class: 'nav-link', method: :delete %>
+              </div>
               <% else %>
-                <div class="menu">
+                <div class="menu mx-5">
                   <%= link_to "新規登録", new_user_registration_path, class: 'nav-link' %>
                   <%= link_to "ログイン", new_user_session_path, class: 'nav-link' %>
                   <%= "ゲストログイン" %>
                 </div>
               <% end %>
+            </div>
+        </div>
+        
+        <div class="col px-0" style="background-image: url(<%= asset_path('background_image.jpeg') %>); z-index: -2;">
+          <div class="touka vh-100 mx-0">
+          <main>
+            <%= yield %>
+          </main>
           </div>
         </div>
         
-        <div class="col">
-          <main id="main">
-            <%= yield %>
-          </main>
-        </div>
       </div>
     </div>
   </body>

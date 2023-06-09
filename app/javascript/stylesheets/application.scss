@@ -1,10 +1,14 @@
 @use '~bootstrap/scss/bootstrap';
 
-nav {
-width: 230px;
+.sidebar {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
-.nav-link {
-    color: white;
-    background-color: rgba(255, 255, 255, 0.493);
+.logo-icon{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo-icon>p {
+  width: 49%;
 }

@@ -1,5 +1,11 @@
 @use '~bootstrap/scss/bootstrap';
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .touka {
     background-color: rgba(255, 255, 255, 0.3);
 }
@@ -15,7 +21,7 @@
 
 h1 {
     margin:  0;                 /* デフォルトCSS打ち消し */
-    font-size:  24px;           /* 文字サイズ指定 */
+    font-size:  30px;           /* 文字サイズ指定 */
     position:  relative;        /* 位置調整 */
     font-weight:  normal;       /* 文字の太さ調整 */
     display:  inline-block;     /* インラインブロックにする */
@@ -36,4 +42,13 @@ h1:before {
     width: 46%;                 /* 幅指定 */
     box-shadow: 0 0 8px 8px #b3b3b3;/* 影指定 */
     transform: rotate(3deg);    /* 回転 */
+}
+
+.top_about{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.top_about>p {
+  width: 49%;
 }

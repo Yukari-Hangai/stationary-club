@@ -1,4 +1,7 @@
-<h1>新規投稿</h1>
+<div style="text-align:center;">
+ <h1 style="background-color: #feeaac; ">新規投稿</h1>
+</div>
+
 <% if @post.errors.any? %>
   <ul>
     <% @post.errors.full_messages.each do |message| %>
@@ -8,16 +11,16 @@
 <% end %>
 
 
-  <%= form_with model: @post do |f| %>
-    <table class="table">
-      <tr>
-        <th>投稿画像</th>
-        <th><%= f.file_field :image, accept: "image/*" %></th>
-      </tr>
-      <tr>
-        <th>本文</th>
-        <th><%= f.text_area :text %></th>
-      </tr>
-    </table>
-    <%= f.submit '投稿' %>
-  <% end %>
+<%= form_with model: @post do |f| %>
+  <table class="table">
+    <tr>
+      <th>投稿画像</th>
+      <th><%= f.file_field :image, accept: "image/*" %></th>
+    </tr>
+    <tr>
+      <th>本文</th>
+      <th><%= f.text_area :text %></th>
+    </tr>
+  </table>
+  <%= f.submit '投稿' %>
+<% end %>

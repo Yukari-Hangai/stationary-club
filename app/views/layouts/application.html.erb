@@ -13,7 +13,7 @@
   </head>
 
   <body>
-    <div class="container-fluid">
+    <div class="container-fluid px-0">
       <div class="row">
           　
         <div class="sidebar col-3 sticky-left vh-100 px-0" style="background-image: url(<%= asset_path('sidebar.jpg') %>); background-size: cover;">
@@ -59,9 +59,9 @@
         
         <div class="col px-0" style="background-image: url(<%= asset_path('background_image.jpeg') %>); z-index: -2;">
           <div class="touka vh-100 mx-0">
-          <main>
-            <%= yield %>
-          </main>
+            <main>
+              <%= yield %>
+            </main>
           </div>
         </div>
         

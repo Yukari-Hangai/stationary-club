@@ -19,11 +19,11 @@
         <div class="sidebar col-3 sticky-left vh-100 px-0" style="background-image: url(<%= asset_path('sidebar.jpg') %>); background-size: cover;">
           <div class="touka vh-100 mx-0">
               <div class="logo_icon mx-5">
-                <p class="logo"><%= image_tag 'logo.png', size: '150x150' %></p>
+                <p class="logo mr-5"><%= image_tag 'logo.png', size: '200x200' %></p>
                 <% if user_signed_in? %>
-                  <p class="post_icon">
+                  <p class="post_icon ml-3">
                     <%= link_to(new_post_path) do %>
-                      <%= image_tag 'post_icon.png', size: '50x50' %>
+                      <%= image_tag 'post_icon.png', size: '80x80' %><br>
                       <%= "新規投稿" %>
                     <% end %>
                   </p>
@@ -31,10 +31,11 @@
               </div>
               <% if user_signed_in? %>
               <div class="logo_icon mx-5">
-                <p class="icon"><%= "ログインユーザーアイコン" %></p>
-                <p><%= "ユーザーID ： " %><%= current_user.id %><br>
-                   <%= "名前 ： " %><%= current_user.name %>
-                </p>
+                <figure class="icon"><%= "ログインユーザーアイコン" %></figure>
+                <div class="information">
+                  <p class="user_id"><%= " ID ： " %><%= current_user.id %></p>
+                  <p class="user_name"><%= "名前 ： " %><%= current_user.name %></p>
+                </div>
               </div>
                 <div class="menu mx-5">
                 <%= "フォロー一覧" %>
@@ -57,7 +58,7 @@
             </div>
         </div>
         
-        <div class="col px-0" style="background-image: url(<%= asset_path('background_image.jpeg') %>); z-index: -2;">
+        <div class="col px-0" style="background-image: url(<%= asset_path('background_image.jpeg') %>);">
           <div class="touka vh-100 mx-0">
             <main>
               <%= yield %>

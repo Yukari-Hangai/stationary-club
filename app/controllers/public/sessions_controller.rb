@@ -31,6 +31,10 @@ class Public::SessionsController < Devise::SessionsController
     root_path#いったんトップにしておく　マイページに遷移/users/my_page
   end
   
+  def after_sign_out_path_for(resource)
+    root_path
+  end
+  
   protected
   
   # 退会しているかを判断するメソッド

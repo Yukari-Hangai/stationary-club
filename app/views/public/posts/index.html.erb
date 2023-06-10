@@ -1,4 +1,6 @@
-<h1>投稿一覧</h1>
+<div style="text-align:center;">
+  <h1 style="background-image: url(<%= asset_path('h1_blue.png') %>);">投稿一覧</h1>
+</div>
 
 <% @posts.each do |post| %>
   <p><%= image_tag post.get_image, size: '100x100' %></p>

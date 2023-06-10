@@ -1,2 +1,31 @@
-<h1>Public::Users#edit</h1>
-<p>Find me in app/views/public/users/edit.html.erb</p>
+<div style="text-align:center;">
+　 <h1 style="background-image: url(<%= asset_path('h1_blue.png') %>); "> 会員情報編集</h1>
+</div>
+
+<%= form_with model: @user, url: user_path, method: :patch do |f| %>
+  <table>
+    <tr>
+      <th><%= image_tag @user.get_profile_image(150,150) %></th>
+      <th><%= f.file_field :profile_image, accept: "image/*" %></th>
+    </tr>
+    <tr>
+      <th>名前 : </th>
+      <th><%= f.text_field :name, autofocus: true %></th>
+    </tr>
+    <tr>
+      <th>自己紹介 : </th>
+      <th><%= f.text_area :introduction %></th>
+    </tr>
+
+    <% if @user == current_user %>
+      <tr>
+        <th>メールアドレス : </th>
+        <th><%= f.text_field :email %></th>
+      </tr>
+    <% end %>
+  </table>
+  
+  <%= f.submit "変更を保存", class: "btn btn-sm btn-secondary" %>
+<% end %>
+
+<%= link_to "投稿一覧へ", posts_path, class: "btn btn-sm btn-primary" %>

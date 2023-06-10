@@ -26,7 +26,7 @@ scope module: :public do
   patch ':id/out/:name' => 'homes#out', as: 'out_user'
   
   resources :posts, only: [:new, :create, :index, :edit, :update, :destroy]
-  resources :users, only: [:show, :edit]
+  resources :users, only: [:show, :edit, :update]
 end
 
 namespace :admin do

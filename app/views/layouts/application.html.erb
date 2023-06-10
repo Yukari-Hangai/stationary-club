@@ -6,7 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <script src="jquery.min.js"></script>
+    <%#script src="jquery.min.js"></script#%>
     <script src="https://kit.fontawesome.com/84f708c9b2.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -29,15 +29,19 @@
                   </p>
                 <% end %>
               </div>
+              
               <% if user_signed_in? %>
-              <div class="logo_icon mx-5">
-                <figure class="icon"><%= "ログインユーザーアイコン" %></figure>
-                <div class="information">
-                  <p class="user_id"><%= " ID ： " %><%= current_user.id %></p>
-                  <p class="user_name"><%= "名前 ： " %><%= current_user.name %></p>
+              <%= link_to user_path(current_user) do %>
+                <div class="logo_icon mx-5">
+                  <figure class="icon"><%= image_tag current_user.get_profile_image(150,150) %></figure>
+                  <div class="information">
+                    <p class="user_id"><%= " ID ： " %><%= current_user.id %></p>
+                    <p class="user_name"><%= "名前 ： " %><%= current_user.name %></p>
+                  </div>
                 </div>
-              </div>
-                <div class="menu mx-5">
+              <% end %>
+              
+              <div class="menu mx-5">
                 <%= "フォロー一覧" %>
                 <%= "フォロワー一覧" %>
                 <%= "投稿一覧" %>

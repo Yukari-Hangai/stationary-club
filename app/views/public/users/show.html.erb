@@ -2,3 +2,35 @@
 　 <h1 style="background-image: url(<%= asset_path('h1_green.png') %>); "> 会員情報</h1>
 </div>
 
+<%= image_tag @user.get_profile_image(150,150) %>
+
+<% unless @user == current_user %>
+  <%= "フォローする" %>
+<% end %>
+
+<table>
+  <tr>
+    <th>会員ID : </th>
+    <th><%= @user.id %></th>
+  </tr>
+  <tr>
+    <th>名前 : </th>
+    <th><%= @user.name %></th>
+  </tr>
+  <tr>
+    <th>自己紹介 : </th>
+    <th><%= @user.introduction %></th>
+  </tr>
+  <% if @user == current_user %>
+    <tr>
+      <th>メールアドレス : </th>
+      <th><%= @user.email %></th>
+    </tr>
+  <% end %>
+</table>
+
+<% if @user == current_user %>
+  <%= link_to "編集", edit_user_path(@user), class: "btn btn-sm btn-success" %>
+<% end %>
+
+<%= link_to "投稿一覧へ", posts_path(@user), class: "btn btn-sm btn-primary" %>

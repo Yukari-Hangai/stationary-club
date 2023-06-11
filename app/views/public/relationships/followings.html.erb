@@ -1,2 +1,5 @@
-<h1>Public::Relationships#followings</h1>
-<p>Find me in app/views/public/relationships/followings.html.erb</p>
+<div style="text-align:center;">
+  <h1 style="background-image: url(<%= asset_path('h1_pink.png') %>);"> フォロー一覧</h1>
+</div>
+
+<%= render 'follow_list', users: @users %>

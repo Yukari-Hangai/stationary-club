@@ -15,6 +15,7 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @post_comment = PostComment.new
   end
 
   def edit

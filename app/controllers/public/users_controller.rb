@@ -10,7 +10,7 @@ class Public::UsersController < ApplicationController
   def update
     @user = User.find(current_user.id)
     @user.update(user_params)
-    redirect_to user_path
+    redirect_to user_path(@user)
   end
 
   private

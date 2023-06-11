@@ -56,7 +56,7 @@
                 <div class="menu mx-5">
                   <%= link_to "新規登録", new_user_registration_path, class: 'nav-link' %>
                   <%= link_to "ログイン", new_user_session_path, class: 'nav-link' %>
-                  <%= "ゲストログイン" %>
+                  <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: 'nav-link', method: :post %>
                 </div>
               <% end %>
             </div>

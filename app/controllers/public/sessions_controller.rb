@@ -2,7 +2,7 @@
 
 class Public::SessionsController < Devise::SessionsController
   before_action :user_state, only: [:create]
-  
+  before_action :authenticate_user!
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in

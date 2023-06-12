@@ -1,0 +1,11 @@
+<div style="text-align:center;">
+  <h1 style="background-image: url(<%= asset_path('h1_green.png') %>); "> 検索結果</h1>
+</div>
+
+<% if @range == "User" %>
+  <h2>検索会員：“<%= @word %>”</h2>
+  <%= render 'public/partial_template/user_index', users: @users %>
+<% else %>
+  <h2>検索投稿：“<%= @word %>”</h2>
+  <%= render 'public/partial_template/post_index', posts: @posts, post_comment: @post_comment %>
+<% end %>

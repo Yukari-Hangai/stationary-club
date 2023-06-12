@@ -24,11 +24,11 @@ Rails.application.routes.draw do
 
 #会員側ルーティング
 root to: 'homes#top'
-
+get "search" => "searches#search"
 scope module: :public do
   get 'quit/:name' => 'homes#quit', as: 'confirm_quit'
   patch ':id/out/:name' => 'homes#out', as: 'out_user'
-  
+
   resources :posts, only: [:new, :create, :index, :edit, :update, :destroy] do
     resource :favorites, only: [:create, :destroy]
     resources :post_comments, only: [:create, :destroy]
@@ -42,12 +42,12 @@ end
 
 #管理者側ルーティング
 namespace :admin do
-  
+
 end
 
 devise_scope :user do
   post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
 end
-  
+
 
 end

@@ -35,8 +35,8 @@
   <% end %>
 </table>
 
-<% if @user == current_user and @user.name != "guestuser" %><!-->ユーザーがログインユーザーであり、且つ名前が"guestuser"でないとき</!->
-  <%= link_to "編集", edit_user_path(@user), class: "btn btn-sm btn-success" %><!-->編集ボタンを表示</!->
+<% if @user == current_user and @user.name != "guestuser" %>
+  <%= link_to "編集", edit_user_path(@user), class: "btn btn-sm btn-success" %>
 <% end %>
 
 <%= link_to "投稿一覧へ", posts_path(@user), class: "btn btn-sm btn-primary" %>

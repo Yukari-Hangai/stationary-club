@@ -46,9 +46,21 @@
                 <p><%= link_to "フォロワー一覧", user_followers_path(current_user) %><p>
                 <p><%= link_to "投稿一覧", posts_path(current_user) %><p>
               </div>
-              <div class="search mx-5">
-                <%= "検索窓" %>
-              </div>
+              <% if user_signed_in? %>
+                <div class="search_form mx-5">
+                  <%= form_with url: search_path, local: true, method: :get do |f| %>
+                    <p>
+                      <%= f.text_field :word %>
+                      <%= f.select :range, options_for_select([['会員'], ['投稿']]) %>
+                    </p>
+                    <p>
+                      <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
+                      <%= f.submit "検索", class: "btn btn-primary" %>
+                    </p>
+                  <% end %>
+                </div>
+              <% end %>
+
               <div class="logout mx-5">
                 <%= link_to "ログアウト", destroy_user_session_path, class: 'nav-link', method: :delete %>
               </div>

@@ -2,36 +2,4 @@
   <h1 style="background-image: url(<%= asset_path('h1_blue.png') %>);">投稿一覧</h1>
 </div>
 
-<% @posts.each do |post| %>
-  <p><%= image_tag post.get_image, size: '100x100' %></p>
-  <p><%= post.text %></p>
-  <p>
-    <% if post.user == current_user %>
-      <%= link_to "編集", edit_post_path(post) %>
-      <%= link_to "削除", post_path(post), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-    <% end %>
-  </p>
-  <% if post.favorited_by?(current_user) %>
-    <p>
-      <%= link_to post_favorites_path(post), method: :delete do %>
-        ♥<%= post.favorites.count %>いいね
-      <% end %>
-    </p>
-    <% else %>
-    <p>
-      <%= link_to post_favorites_path(post), method: :create do %>
-        ♡<%= post.favorites.count %>いいね
-      <% end %> 
-    </p>
-  <% end %>
-
-
-<div id="post_comments">
-  <%= render 'public/post_comments/post_comments', post: post, post_comment: @post_comment %>
-</div>
-  
-<div id="comment_form">
-  <%= render 'public/post_comments/form', post: post, post_comment: @post_comment %>
-</div>
-
-<% end %>
+<%= render 'public/partial_template/post_index', posts: @posts, post_comment: @post_comment %>

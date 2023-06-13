@@ -62,7 +62,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # end
   
   def after_sign_in_path_for(resource)
-    root_path#いったんトップにしておく　マイページに遷移/users/my_page
+    user_posts_path(current_user.following)
   end
   
 

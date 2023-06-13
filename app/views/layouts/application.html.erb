@@ -15,38 +15,43 @@
   <body>
     <div class="container-fluid px-0">
       <div class="row">
-          　
+
         <div class="sidebar col-3 sticky-left vh-100 px-0" style="background-image: url(<%= asset_path('sidebar.jpg') %>); background-size: cover;">
           <div class="touka vh-100 mx-0">
+            <% if user_signed_in? %>
               <div class="logo_icon mx-5">
-                <p class="logo mr-5"><%= image_tag 'logo.png', size: '200x200' %></p>
-                <% if user_signed_in? %>
-                  <p class="post_icon ml-3">
-                    <%= link_to(new_post_path) do %>
-                      <%= image_tag 'post_icon.png', size: '80x80' %><br>
-                      <%= "新規投稿" %>
-                    <% end %>
-                  </p>
-                <% end %>
+                <p class="logo mr-5">
+                  <%= link_to (my_page_path) do %>
+                    <%= image_tag 'logo.png', size: '200x200' %>
+                  <% end %>
+                </p>
+                
+                <p class="post_icon ml-3">
+                  <%= link_to(new_post_path) do %>
+                    <%= image_tag 'post_icon.png', size: '80x80' %><br>
+                    <%= "新規投稿" %>
+                  <% end %>
+                </p>
               </div>
-              
+            <% end %>
+
               <% if user_signed_in? %>
-              <%= link_to user_path(current_user) do %>
-                <div class="logo_icon mx-5">
-                  <figure class="icon"><%= image_tag current_user.get_profile_image(150,150) %></figure>
-                  <div class="information">
-                    <p class="user_id"><%= " ID ： " %><%= current_user.id %></p>
-                    <p class="user_name"><%= "名前 ： " %><%= current_user.name %></p>
+                <%= link_to user_path(current_user) do %>
+                  <div class="logo_icon mx-5">
+                    <figure class="icon"><%= image_tag current_user.get_profile_image(150,150) %></figure>
+                    <div class="information">
+                      <p class="user_id"><%= " ID ： " %><%= current_user.id %></p>
+                      <p class="user_name"><%= "名前 ： " %><%= current_user.name %></p>
+                    </div>
                   </div>
+                <% end %>
+
+                <div class="menu mx-5">
+                  <p><%= link_to "フォロー一覧", user_followings_path(current_user) %></p>
+                  <p><%= link_to "フォロワー一覧", user_followers_path(current_user) %><p>
+                  <p><%= link_to "投稿一覧", user_posts_path(current_user) %><p>
                 </div>
-              <% end %>
-              
-              <div class="menu mx-5">
-                <p><%= link_to "フォロー一覧", user_followings_path(current_user) %></p>
-                <p><%= link_to "フォロワー一覧", user_followers_path(current_user) %><p>
-                <p><%= link_to "投稿一覧", posts_path(current_user) %><p>
-              </div>
-              <% if user_signed_in? %>
+
                 <div class="search_form mx-5">
                   <%= form_with url: search_path, local: true, method: :get do |f| %>
                     <p>
@@ -59,12 +64,38 @@
                     </p>
                   <% end %>
                 </div>
-              <% end %>
 
-              <div class="logout mx-5">
-                <%= link_to "ログアウト", destroy_user_session_path, class: 'nav-link', method: :delete %>
-              </div>
+                <div class="logout mx-5">
+                  <%= link_to "ログアウト", destroy_user_session_path, class: 'nav-link', method: :delete %>
+                </div>
+              <% elsif admin_signed_in? %><!--管理者ヘッダー-->
+                <div class="logo_icon mx-5">
+                  <p class="logo mr-5">
+                    <%= link_to (admin_path) do %>
+                      <%= image_tag 'logo.png', size: '200x200' %>
+                    <% end %>
+                  </p>
+                </div>
+                <p>管理者ログイン中</p>
+                <p><%= link_to "ログアウト", destroy_admin_session_path, class: 'nav-link',method: :delete %></p>
+                <div class="search_form mx-5">
+                  <%= form_with url: search_path, local: true, method: :get do |f| %>
+                    <p>
+                      <%= f.text_field :word %>
+                      <%= f.select :range, options_for_select([['会員'], ['投稿']]) %>
+                    </p>
+                    <p>
+                      <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
+                      <%= f.submit "検索", class: "btn btn-primary" %>
+                    </p>
+                  <% end %>
+                </div>
               <% else %>
+                <div class="logo_icon mx-5">
+                  <p class="logo mr-5">
+                    <%= image_tag 'logo.png', size: '200x200' %>
+                  </p>
+              </div>
                 <div class="menu mx-5">
                   <%= link_to "新規登録", new_user_registration_path, class: 'nav-link' %>
                   <%= link_to "ログイン", new_user_session_path, class: 'nav-link' %>
@@ -73,7 +104,7 @@
               <% end %>
             </div>
         </div>
-        
+
         <div class="col px-0" style="background-image: url(<%= asset_path('background_image.jpeg') %>);">
           <div class="touka vh-100 mx-0">
             <main>
@@ -81,7 +112,7 @@
             </main>
           </div>
         </div>
-        
+
       </div>
     </div>
   </body>

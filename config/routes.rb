@@ -2,12 +2,8 @@ Rails.application.routes.draw do
   namespace :public do
     get 'relationships/followings'
     get 'relationships/followers'
-  end
-  namespace :public do
     get 'users/show'
     get 'users/edit'
-  end
-  namespace :public do
     get 'user/show'
     get 'user/edit'
   end
@@ -28,13 +24,14 @@ get "search" => "searches#search"
 scope module: :public do
   get 'quit/:name' => 'homes#quit', as: 'confirm_quit'
   patch ':id/out/:name' => 'homes#out', as: 'out_user'
-
-  resources :posts, only: [:new, :create, :index, :edit, :update, :destroy] do
+  get 'posts/my_page' => 'posts#my_page', as: 'my_page'
+  resources :posts, only: [:new, :create, :edit, :update, :destroy] do
     resource :favorites, only: [:create, :destroy]
     resources :post_comments, only: [:create, :destroy]
   end
   resources :users, only: [:show, :edit, :update] do
     resource :relationships, only: [:create, :destroy]
+    resources :posts, only: [:index]
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
   end
@@ -42,7 +39,9 @@ end
 
 #管理者側ルーティング
 namespace :admin do
-
+  get '/' => 'homes#top'
+  resources :users, only: [:edit,:update, :index]
+  
 end
 
 devise_scope :user do

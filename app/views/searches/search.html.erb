@@ -2,7 +2,7 @@
   <h1 style="background-image: url(<%= asset_path('h1_green.png') %>); "> 検索結果</h1>
 </div>
 
-<% if @range == "User" %>
+<% if @range == "会員" %>
   <h2>検索会員：“<%= @word %>”</h2>
   <%= render 'public/partial_template/user_index', users: @users %>
 <% else %>

@@ -4,8 +4,9 @@
       <thead></thead>
       <tbody>
         <tr>
+          <td>会員id: <%= user.id %></td>
           <td>
-            <%= link_to user_path(user) do %>
+            <%= link_to edit_admin_user_path(user) do %>
               <%= image_tag user.get_profile_image(50,50) %>
               <%= user.name %>
             <% end %>

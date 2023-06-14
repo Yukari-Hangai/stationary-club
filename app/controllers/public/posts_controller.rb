@@ -37,7 +37,7 @@ class Public::PostsController < ApplicationController
     @post.destroy
     redirect_to user_posts_path(current_user)
   end
-  
+
   def my_page
     @follower_posts = Post.where(user_id: [*current_user.following_ids])
     @post_comment = PostComment.new

@@ -47,9 +47,10 @@
                 <% end %>
 
                 <div class="menu mx-5">
-                  <p><%= link_to "フォロー一覧", user_followings_path(current_user) %></p>
-                  <p><%= link_to "フォロワー一覧", user_followers_path(current_user) %><p>
+                  <p><%= link_to "フォロー一覧", followings_path %></p>
+                  <p><%= link_to "フォロワー一覧", followers_path %><p>
                   <p><%= link_to "投稿一覧", user_posts_path(current_user) %><p>
+                  <p><%= link_to "お気に入り投稿一覧",favorites_user_path(current_user) %></p>
                 </div>
 
                 <div class="search_form mx-5">

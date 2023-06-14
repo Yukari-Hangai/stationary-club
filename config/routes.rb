@@ -19,34 +19,42 @@ Rails.application.routes.draw do
 }
 
 #会員側ルーティング
-root to: 'homes#top'
-get "search" => "searches#search"
-scope module: :public do
-  get 'quit/:name' => 'homes#quit', as: 'confirm_quit'
-  patch ':id/out/:name' => 'homes#out', as: 'out_user'
-  get 'posts/my_page' => 'posts#my_page', as: 'my_page'
-  resources :posts, only: [:new, :create, :edit, :update, :destroy] do
-    resource :favorites, only: [:create, :destroy]
-    resources :post_comments, only: [:create, :destroy]
+  root to: 'homes#top'
+  get "search" => "searches#search"
+  scope module: :public do
+    get 'quit/:name' => 'homes#quit', as: 'confirm_quit'
+    patch ':id/out/:name' => 'homes#out', as: 'out_user'
+    get 'posts/my_page' => 'posts#my_page', as: 'my_page'
+    resources :posts, only: [:new, :create, :edit, :update, :destroy] do
+      resource :favorites, only: [:create, :destroy]
+      resources :post_comments, only: [:create, :destroy]
+    end
+    resources :users, only: [:show, :edit, :update] do
+      resource :relationships, only: [:create, :destroy]
+      resources :posts, only: [:index]
+      member do
+        get :favorites
+      end
+    end
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
   end
-  resources :users, only: [:show, :edit, :update] do
-    resource :relationships, only: [:create, :destroy]
-    resources :posts, only: [:index]
-    get 'followings' => 'relationships#followings', as: 'followings'
-    get 'followers' => 'relationships#followers', as: 'followers'
-  end
-end
 
-#管理者側ルーティング
-namespace :admin do
-  get '/' => 'homes#top'
-  resources :users, only: [:edit,:update, :index]
   
-end
-
-devise_scope :user do
-  post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
-end
-
+  #管理者側ルーティング
+  namespace :admin do
+    get '/' => 'homes#top'
+    resources :posts, only: [:destroy] do
+      resources :post_comments, only: [:destroy]
+    end
+    resources :users, only: [:edit,:update, :index] do
+      resources :posts, only: [:index]
+    end
+  end
+  
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+  end
+  
 
 end

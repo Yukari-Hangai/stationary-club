@@ -1,14 +1,4 @@
-<% if posts.where(user_id: current_user.id).exists? %>
-  <div style="text-align:center;">
-    <h1 style="background-image: url(<%= asset_path('h1_blue.png') %>);">自分の投稿一覧</h1>
-  </div>
-<% else %>
-  <div style="text-align:center;">
-    <h1 style="background-image: url(<%= asset_path('h1_blue.png') %>);"><%= user.name %>の投稿一覧</h1>
-  </div>
-<% end %>
-
-<% if posts.exists? %>
+<% if posts.present? %>
   <% posts.each do |post| %>
     <div><%= image_tag post.get_image, size: '200x200' %></div>
     <div>

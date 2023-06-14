@@ -1,0 +1,19 @@
+<% if posts.present? %>
+  <% posts.each do |post| %>
+    <div><%= image_tag post.get_image, size: '200x200' %></div>
+    <div>
+      <%= image_tag post.user.get_profile_image(50,50) %>
+      <%= post.user.name %>
+      <%= post.created_at.strftime('%Y年%-m月%-d日 %-H時%-M分') %>
+    </div>
+    <div><%= post.text %></div>
+    <div>♥<%= post.favorites.count %>いいね</div>
+
+    <div id="admin_post_comments">
+      <%= render 'admin/partial_template/admin_post_comments', post: post, post_comment: post_comment %>
+    </div>
+    
+  <% end %>
+<% else %>
+  <p>投稿はありません</p>
+<% end %>

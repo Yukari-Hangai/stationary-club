@@ -8,11 +8,12 @@
     </div>
     <div><%= post.text %></div>
     <div>♥<%= post.favorites.count %>いいね</div>
+    
+    <%= link_to "削除", admin_post_path(post), method: :delete, remote: true, "data-confirm" => "本当に削除しますか？" %>
 
     <div id="admin_post_comments">
       <%= render 'admin/partial_template/admin_post_comments', post: post, post_comment: post_comment %>
     </div>
-    
   <% end %>
 <% else %>
   <p>投稿はありません</p>

@@ -22,7 +22,15 @@ class Public::UsersController < ApplicationController
     @favorite_posts = Post.find(favorites).sort_by(&:created_at).reverse
     @post_comment = PostComment.new
   end
-
+  
+  def out#退会処理
+    @user = User.find(current_user.id)
+    @user.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "退会処理を実行しました。"
+    redirect_to root_path
+  end
+  
   private
 
   def user_params

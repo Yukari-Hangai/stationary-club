@@ -17,14 +17,15 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
-
-#会員側ルーティング
+  
   root to: 'homes#top'
   get "search" => "searches#search"
+  
+#会員側ルーティング
   scope module: :public do
-    get 'quit/:name' => 'homes#quit', as: 'confirm_quit'
-    patch ':id/out/:name' => 'homes#out', as: 'out_user'
     get 'posts/my_page' => 'posts#my_page', as: 'my_page'
+    get 'users/quit' => 'users#quit', as: 'confirm_quit'
+    patch 'users/out' => 'users#out', as: 'out_user'
     resources :posts, only: [:new, :create, :edit, :update, :destroy] do
       resource :favorites, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]

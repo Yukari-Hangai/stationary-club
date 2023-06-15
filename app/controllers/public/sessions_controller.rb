@@ -40,9 +40,13 @@ class Public::SessionsController < Devise::SessionsController
   # 退会しているかを判断するメソッド
   def user_state
     @user = User.find_by(email: params[:user][:email])#入力されたemailとuserの中のemailが一致するアカウントを@userに代入
-    return if !@user#アカウント取得できなかった場合終了
-    if @user.valid_password?(params[:user][:password]) && @user.is_deleted#@userのpasswordと入力されたpasswordが一致している且つ退会フラグ（is_deleted)がtrue（退会）か
-      redirect_to new_user_registration_path#true && trueの時true=退会している
+    if @user
+      if @user.valid_password?(params[:user][:password]) && (@user.is_deleted == true)#@userのpasswordと入力されたpasswordが一致している且つ退会フラグ（is_deleted)がtrue（退会）か
+        flash[:notice] = "退会済みです。再度ご登録をしてご利用ください"
+        redirect_to new_user_registration_path#true && trueの時true=退会している
+      end
+    else
+      flash[:notice] = "該当するユーザーが見つかりません"
     end
   end
 end

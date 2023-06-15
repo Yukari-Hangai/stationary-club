@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        remember_me: 次回から自動的にログイン
+        name: 名前
+      
+      admin:
+        email: メールアドレス
+        password: パスワード
+        remember_me: 次回から自動的にログイン

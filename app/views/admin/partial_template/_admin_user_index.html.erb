@@ -14,6 +14,7 @@
           <td>投稿数: <%= user.posts.count %></td>
           <td>フォロー数: <%= user.followings.count %></td>
           <td>フォロワー数: <%= user.followers.count %></td>
+          <td>退会フラグ: <%= user.is_deleted ? "退会" : "有効" %></td>
           <td>
             <%= link_to "投稿一覧へ", admin_user_posts_path(user), class: "btn btn-sm btn-primary" %>
           </td>

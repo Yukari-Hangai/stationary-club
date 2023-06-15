@@ -1,5 +1,6 @@
 <% if posts.present? %>
   <% posts.each do |post| %>
+    <% if post.user.is_deleted == false %>
     <div><%= image_tag post.get_image, size: '200x200' %></div>
     <div>
       <%= image_tag post.user.get_profile_image(50,50) %>
@@ -24,6 +25,9 @@
     <div id="comment_form">
       <%= render 'public/partial_template/form', post: post, post_comment: post_comment %>
     </div>
+    <% else %>
+      <p><%= post.user.name %>《退会済みユーザーの投稿です》</p>
+    <% end %>
   <% end %>
 <% else %>
   <p>投稿はありません</p>

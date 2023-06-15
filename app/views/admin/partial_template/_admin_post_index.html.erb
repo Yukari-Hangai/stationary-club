@@ -2,9 +2,11 @@
   <% posts.each do |post| %>
     <div><%= image_tag post.get_image, size: '200x200' %></div>
     <div>
-      <%= image_tag post.user.get_profile_image(50,50) %>
-      <%= post.user.name %>
-      <%= post.created_at.strftime('%Y年%-m月%-d日 %-H時%-M分') %>
+      <%= link_to edit_admin_user_path(user) do %>
+        <%= image_tag post.user.get_profile_image(50,50) %>
+        <%= post.user.name %>
+      <% end %>
+        <%= post.created_at.strftime('%Y年%-m月%-d日 %-H時%-M分') %>
     </div>
     <div><%= post.text %></div>
     <div>♥<%= post.favorites.count %>いいね</div>

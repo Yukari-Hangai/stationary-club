@@ -1,13 +1,36 @@
 @use '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Kaisei Decol', serif;
+  color: #615F62;
 }
 
 .touka {
     background-color: rgba(255, 255, 255, 0.3);
+}
+
+.side_bar {
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    max-width: 100%;
+    overflow: hidden;
+    pointer-events: auto;
+    top: 0;
+    transition-duration: .2s;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    will-change: transform;
+    transition-property: transform,visibility,width;
+}
+
+.side_bar_fixed {
+    position: fixed;
+    z-index: 1;
 }
 
 .logo_icon{
@@ -15,6 +38,7 @@
     justify-content: space-between;
     align-items: center;
 }
+
 .logo_icon>p {
     width: 49%;
 }
@@ -56,4 +80,19 @@ h1 {
 }
 .top_about>p {
   width: 49%;
+}
+
+p {
+  color: #6F4A2A;
+}
+
+a {
+  color: #6F4A2A !important;
+}
+
+.main_wrap {
+  flex: auto;
+  max-width: 100%;
+  position: relative;
+  height: 100vh;
 }

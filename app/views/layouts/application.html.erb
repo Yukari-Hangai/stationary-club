@@ -1,42 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
     <title>StationaryClub</title>
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%#script src="jquery.min.js"></script#%>
     <script src="https://kit.fontawesome.com/84f708c9b2.js" crossorigin="anonymous"></script>
-    
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <div class="container-fluid px-0">
-      <div class="row">
+      <div>
+        <nav class="side_bar side_bar_fixed " style="height: 100vh; top: 0px; transform: translateX(0%); width: 360px; max-height: calc(100% - 0px); background-image: url(<%= asset_path('sidebar.jpg') %>); background-size: cover;">
+          <div class="touka vh-100 mx-0 ">
+            <div class="trigger text-right">
+              <% if user_signed_in? %><!--ユーザーログイン時のロゴと新規投稿リンク-->
+                <div class="logo_icon mx-auto">
+                  <p class="logo mr-2">
+                    <%= link_to my_page_path do %>
+                      <%= image_tag 'logo.png', size: '200x200' %>
+                    <% end %>
+                  </p>
+                  <p class="post_icon ml-2">
+                    <%= link_to new_post_path do %>
+                      <%= image_tag 'post_icon.png', size: '80x80' %><br>
+                      <%= "新規投稿" %>
+                    <% end %>
+                  </p>
 
-        <div class="sidebar col-3 sticky-left vh-100 px-0" style="background-image: url(<%= asset_path('sidebar.jpg') %>); background-size: cover;">
-          <div class="touka vh-100 mx-0">
-            <% if user_signed_in? %>
-              <div class="logo_icon mx-5">
-                <p class="logo mr-5">
-                  <%= link_to my_page_path do %>
-                    <%= image_tag 'logo.png', size: '200x200' %>
-                  <% end %>
-                </p>
-                
-                <p class="post_icon ml-3">
-                  <%= link_to new_post_path do %>
-                    <%= image_tag 'post_icon.png', size: '80x80' %><br>
-                    <%= "新規投稿" %>
-                  <% end %>
-                </p>
-              </div>
-            <% end %>
+                </div>
+              <% end %>
 
-              <% if user_signed_in? %>
+              <% if user_signed_in? %><!--ユーザーログイン時のメニュー-->
                 <%= link_to user_path(current_user) do %>
                   <div class="logo_icon mx-5">
                     <figure class="icon"><%= image_tag current_user.get_profile_image(150,150) %></figure>
@@ -46,14 +46,12 @@
                     </div>
                   </div>
                 <% end %>
-
                 <div class="menu mx-5">
-                  <p><%= link_to "フォロー一覧", followings_path %></p>
-                  <p><%= link_to "フォロワー一覧", followers_path %><p>
-                  <p><%= link_to "投稿一覧", user_posts_path(current_user) %><p>
-                  <p><%= link_to "お気に入り投稿一覧",favorites_user_path(current_user) %></p>
+                  <p><%= link_to "フォロー一覧", followings_path %></p><br>
+                  <p><%= link_to "フォロワー一覧", followers_path %><p><br>
+                  <p><%= link_to "投稿一覧", user_posts_path(current_user) %><p><br>
+                  <p><%= link_to "お気に入り投稿一覧",favorites_user_path(current_user) %></p><br>
                 </div>
-
                 <div class="search_form mx-5">
                   <%= form_with url: search_path, local: true, method: :get do |f| %>
                     <p>
@@ -66,10 +64,10 @@
                     </p>
                   <% end %>
                 </div>
-
                 <div class="logout mx-5">
-                  <%= link_to "ログアウト", destroy_user_session_path, class: 'nav-link', method: :delete %>
+                  <br><%= link_to "ログアウト", destroy_user_session_path, class: 'nav-link', method: :delete %>
                 </div>
+
               <% elsif admin_signed_in? %><!--管理者ヘッダー-->
                 <div class="logo_icon mx-5">
                   <p class="logo mr-5">
@@ -77,9 +75,8 @@
                       <%= image_tag 'logo.png', size: '200x200' %>
                     <% end %>
                   </p>
+                  <p>管理者<br>ログイン中</p>
                 </div>
-                <p>管理者ログイン中</p>
-                <p><%= link_to "ログアウト", destroy_admin_session_path, class: 'nav-link',method: :delete %></p>
                 <div class="search_form mx-5">
                   <%= form_with url: search_path, local: true, method: :get do |f| %>
                     <p>
@@ -92,30 +89,36 @@
                     </p>
                   <% end %>
                 </div>
-              <% else %>
+                <div class="log_out">
+                  <p><%= link_to "ログアウト", destroy_admin_session_path, class: 'nav-link',method: :delete %></p>
+                </div>
+
+              <% else %><!--非ログイン時のメニュー-->
                 <div class="logo_icon mx-5">
                   <p class="logo mr-5">
                     <%= image_tag 'logo.png', size: '200x200' %>
                   </p>
-              </div>
+         　　     </div>
                 <div class="menu mx-5">
                   <%= link_to "新規登録", new_user_registration_path, class: 'nav-link' %>
                   <%= link_to "ログイン", new_user_session_path, class: 'nav-link' %>
                   <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: 'nav-link', method: :post %>
                 </div>
               <% end %>
-            </div>
-        </div>
 
-        <div class="col px-0" style="background-image: url(<%= asset_path('background_image.jpeg') %>);">
-          <div class="touka vh-100 mx-0">
-            <main>
-              <%= yield %>
-            </main>
           </div>
-        </div>
+        </nav>
 
-      </div>
+        <main class="main" style="padding: 0px 0px 0px 360px;" data-booted="true">
+          <div class=" col-9 main_wrap" style="background-image: url(<%= asset_path('background_image.jpeg') %>); background-repeat: repeat; overflow-y: auto; background-attachment: local;"><!--各画面部分-->
+                <div class="touka vh-100 mx-0">
+                  <%= yield %>
+                </div>
+          </div>
+        </main>
+        
     </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/script.js"></script>
   </body>
 </html>

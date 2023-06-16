@@ -12,7 +12,9 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag('favicon.ico') %>
   </head>
+
 
   <body>
     <nav class="side_bar side_bar_fixed " style="height: 100vh; top: 0px; transform: translateX(0%); width: 360px; max-height: calc(100% - 0px); background-image: url(<%= asset_path('sidebar.jpg') %>); background-size: cover;">

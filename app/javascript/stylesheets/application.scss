@@ -9,6 +9,46 @@
   color: #615F62;
 }
 
+.input_btn {
+    border-radius : 14%;          /* 角丸       */
+    font-size     : 9pt;        /* 文字サイズ */
+    text-align    : center;      /* 文字位置   */
+    cursor        : pointer;     /* カーソル   */
+    padding       : 7px 2px;   /* 余白       */
+    background    : #b5a399;     /* 背景色     */
+    color         : #eee0ce;     /* 文字色     */
+    line-height   : 1em;         /* 1行の高さ  */
+    transition    : .3s;         /* なめらか変化 */
+    box-shadow    : 5px 5px 3px #666666;  /* 影の設定 */
+    border        : 2px solid #b5a399;    /* 枠の指定 */
+}
+
+.input_btn:hover {
+    box-shadow    : none;        /* カーソル時の影消去 */
+    color         : #b5a399;     /* 背景色     */
+    background    : #eee0ce;     /* 文字色     */
+}
+
+.link_btn {
+  display       : inline-block;
+  border-radius : 20%;          /* 角丸       */
+  font-size     : 9pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 7px 0px;   /* 余白       */
+  background    : #eee0ce;     /* 背景色     */
+  color         : #6d4845;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  opacity       : 0.9;         /* 透明度     */
+  transition    : .3s;         /* なめらか変化 */
+}
+
+.link_btn:hover {
+    background    : #6d4845; 
+    color         : #eee0ce;
+    text-decoration: none;
+    opacity       : 1;           /* カーソル時透明度 */
+}
 
 .layer {
     background-color: rgba(255, 255, 255, 0.3);
@@ -89,7 +129,10 @@ p {
 }
 
 a {
-  color: #6F4A2A !important;
+  color: #6F4A2A;
+}
+a:hover {
+  color: #6F4A2A;
 }
 
 .main_wrap {
@@ -97,4 +140,49 @@ a {
   max-width: 100%;
   position: relative;
   height: 100vh;
+}
+
+.index {
+    min-height: 92vh; /* ←コンテンツの高さの最小値＝ブラウザの高さに指定 */
+    position: relative;/* ←相対位置 */
+    padding-bottom: 60px; /* ←フッターの高さを指定 */
+    box-sizing: border-box;
+}
+
+.table td {
+    vertical-align: initial;
+}
+
+.paginate {
+    position: absolute;/* ←絶対位置 */
+    bottom: 0;
+}
+
+.pagination {
+  justify-content: center;
+}
+
+.page-item.active .page-link {
+  background: #eee0ce;
+  border: none;
+  color: #6F4A2A;
+}
+
+.pagination>li>a {
+  border: none;     /*枠線をなくす*/
+  color: #6F4A2A;
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {     
+  background: #6d4845;     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination a:hover {        
+  border-radius: 15px;    /*角を丸くする*/
+  background: #6F4A2A;
+  opacity       : 3;
+  color:#eee0ce;  
 }

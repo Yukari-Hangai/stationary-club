@@ -1,27 +1,38 @@
-<% if users.exists? %>
-  <% users.each do |user| %>
-    <table>
-      <thead></thead>
-      <tbody>
-        <tr>
-          <td>会員id: <%= user.id %></td>
-          <td>
-            <%= link_to edit_admin_user_path(user) do %>
-              <%= image_tag user.get_profile_image(50,50) %>
-              <%= user.name %>
+<div class="container index">
+  <div class="row">
+    <div class="mx-auto">
+      <% if users.exists? %>
+        <table class="table table-borderless">
+          <thead>
+            <tr>
+              <th>会員id</th>
+            </tr>
+          </thead>
+          <tbody> 
+            <% users.each do |user| %>
+              <tr>
+                <td class="text-center"><%= user.id %></td>
+                <td>
+                  <%= link_to edit_admin_user_path(user) do %>
+                    <%= image_tag user.get_profile_image(50,50) %>
+                    <%= user.name %>
+                  <% end %>
+                </td>
+                <td>投稿数: <%= user.posts.count %></td>
+                <td>フォロー数: <%= user.followings.count %></td>
+                <td>フォロワー数: <%= user.followers.count %></td>
+                <td>退会フラグ: <%= user.is_deleted ? "退会" : "有効" %></td>
+                <td>
+                  <%= link_to "投稿一覧へ", admin_user_posts_path(user), class:"link_btn" %>
+                </td>
+              </tr>
             <% end %>
-          </td>
-          <td>投稿数: <%= user.posts.count %></td>
-          <td>フォロー数: <%= user.followings.count %></td>
-          <td>フォロワー数: <%= user.followers.count %></td>
-          <td>退会フラグ: <%= user.is_deleted ? "退会" : "有効" %></td>
-          <td>
-            <%= link_to "投稿一覧へ", admin_user_posts_path(user), class: "btn btn-sm btn-primary" %>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  <% end %>
-<% else %>
-  <p>会員はいません</p>
-<% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <p>会員はいません</p>
+      <% end %>
+    </div>
+    <div class="col paginate"><%= paginate users %></div>
+  </div>
+</div>

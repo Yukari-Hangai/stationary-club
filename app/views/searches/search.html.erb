@@ -15,6 +15,6 @@
     <%= render 'admin/partial_template/admin_user_index', users: @users %>
   <% else %>
     <h2>検索投稿：“<%= @word %>”</h2>
-    <%= render 'admin/partial_template/admin_post_index', posts: @posts, post_comment: @post_comment %>
+    <%= render 'admin/partial_template/admin_post_index', posts: @posts, post_comment: @post_comment, user: @user %>
   <% end %>
 <% end %>

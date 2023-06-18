@@ -1,29 +1,36 @@
-<% if users.exists? %>
-  <% users.each do |user| %>
-    <% if user.is_deleted == false %>
-      <table>
-        <thead></thead>
-        <tbody>
-          <tr>
-            <td>
-              <%= link_to user_path(user) do %>
-                <%= image_tag user.get_profile_image(50,50) %>
-                <%= user.name %>
-              <% end %>
-            </td>
-            <td>投稿数: <%= user.posts.count %></td>
-            <td>フォロー数: <%= user.followings.count %></td>
-            <td>フォロワー数: <%= user.followers.count %></td>
-            <td>
-              <%= link_to "投稿一覧へ", user_posts_path(user), class: "btn btn-sm btn-primary" %>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    <% else %>
-      <p><%= user.name %>《退会済みユーザー》</p>
-    <% end %>
-  <% end %>
-<% else %>
-  <p>会員はいません</p>
-<% end %>
+<div class="container index">
+  <div class="row">
+    <div class="mx-auto">
+      <% if users.exists? %>
+   　　   <% users.each do |user| %>
+          <% if user.is_deleted == false %>
+            <table class="table table-borderless">
+              <thead></thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <%= link_to user_path(user) do %>
+                      <%= image_tag user.get_profile_image(50,50) %>
+                      <%= user.name %>
+                    <% end %>
+                  </td>
+                  <td>投稿数: <%= user.posts.count %></td>
+                  <td>フォロー数: <%= user.followings.count %></td>
+                  <td>フォロワー数: <%= user.followers.count %></td>
+                  <td>
+                    <%= link_to "投稿一覧へ", user_posts_path(user), class:"link_btn" %>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          <% else %>
+            <p><%= "　" + user.name %>《退会済みユーザー》</p>
+          <% end %>
+        <% end %>
+      <% else %>
+        <p><%= "会員はいません" %></p>
+      <% end %>
+    </div>
+    <div class="col paginate"><%= paginate users %></div>
+  </div>
+</div>

@@ -13,11 +13,11 @@ class Public::RelationshipsController < ApplicationController
   
   # フォロー一覧
   def followings
-    @users = current_user.followings
+    @users = current_user.followings.page(params[:page])
   end
   # フォロワー一覧
   def followers
-    @users = current_user.followers
+    @users = current_user.followers.page(params[:page])
   end
   
 end

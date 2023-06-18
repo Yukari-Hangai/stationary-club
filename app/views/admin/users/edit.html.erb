@@ -2,32 +2,38 @@
 　 <h1 style="background-image: url(<%= asset_path('h1_green.png') %>); "> 会員情報</h1>
 </div>
 
-<p> <%= notice %> </p>
+<div class="container index">
+  <div class="row">
+    <div class="mx-auto text-center">
+      <p><%= flash[:notice] %></p>
 
-<%= image_tag @user.get_profile_image(150,150) %>
-<br>
+      <%= image_tag @user.get_profile_image(150,150) %>
+      <br>
 
-<table>
-  <tr>
-    <th>会員ID : </th>
-    <td><%= @user.id %></td>
-  </tr>
-  <tr>
-    <th>名前 : </th>
-    <td><%= @user.name %></td>
-  </tr>
-  <tr>
-    <th>メールアドレス : </th>
-    <td><%= @user.email %></td>
-  <tr>
-    <th>会員ステータス : </th>
-    <td>
-      <%= form_with model: @user, url:admin_user_path(@user) do |f| %>
-        <%= f.select :is_deleted, [["有効", "false"], ["退会", "true"]]  %>
-        <%= f.submit '変更を保存'%>
-      <% end %>
-    </td>
-  </tr>
-</table>
+      <table class="user_edit_table mb-3">
+        <tr>
+          <th class="text-right">会員ID :</th>
+          <td class="text-left"><%= @user.id %></td>
+        </tr>
+        <tr>
+          <th class="text-right">名前 :</th>
+          <td class="text-left"><%= @user.name %></td>
+        </tr>
+        <tr>
+          <th class="text-right">メールアドレス :</th>
+          <td class="text-left"><%= @user.email %></td>
+        <tr>
+          <th class="text-right">会員ステータス :</th>
+          <td class="text-left">
+            <%= form_with model: @user, url:admin_user_path(@user) do |f| %>
+              <%= f.select :is_deleted, [["有効", "false"], ["退会", "true"]]  %>
+              <%= f.submit '変更を保存', class: "input_btn"%>
+            <% end %>
+          </td>
+        </tr>
+      </table>
 
-<%= link_to '戻る', :back %>
+      <%= link_to '　戻る　', admin_path, class: "link_btn" %>
+    </div>
+  </div>
+</div>

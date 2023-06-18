@@ -2,34 +2,42 @@
 　 <h1 style="background-image: url(<%= asset_path('h1_blue.png') %>); "> 会員情報編集</h1>
 </div>
 
-<%= form_with model: @user, url: user_path, method: :patch do |f| %>
-  <table>
-    <tr>
-      <th><%= image_tag @user.get_profile_image(150,150) %></th>
-      <th><%= f.file_field :profile_image, accept: "image/*" %></th>
-    </tr>
-    <tr>
-      <th>名前 : </th>
-      <th><%= f.text_field :name, autofocus: true %></th>
-    </tr>
-    <tr>
-      <th>自己紹介 : </th>
-      <th><%= f.text_area :introduction %></th>
-    </tr>
+<div class="container index">
+  <p class="text-right"><%= link_to "　退会する　", confirm_quit_path(@user), class: "out_btn" %></p>
+  <div class="row">
+    <div class="mx-auto text-center">
+      <p><%= flash[:notice] %></p>
 
-    <% if @user == current_user %>
-      <tr>
-        <th>メールアドレス : </th>
-        <th><%= f.text_field :email %></th>
-      </tr>
-    <% end %>
-  </table>
-  
-  <%= f.submit "変更を保存", class: "btn btn-sm btn-secondary" %>
-<% end %>
+        <%= form_with model: @user, url: user_path, method: :patch do |f| %>
+          <%= image_tag @user.get_profile_image(150,150) %>
+          <p><%= f.file_field :profile_image, accept: "image/*" %></p>
+          
+          <table class="user_edit_table mb-3">
+            <tr>
+              <th class="text-right">名前 : </th>
+              <td class="text-left"><%= f.text_field :name, autofocus: true %></td>
+            </tr>
+            <tr>
+              <th class="text-right">自己紹介 : </th>
+              <td class="text-left"><%= f.text_area :introduction %></td>
+            </tr>
 
-<%= link_to '戻る', :back %>
-
-<%= link_to "投稿一覧へ", user_posts_path(@user), class: "btn btn-sm btn-primary" %>
-
-<%= link_to "退会", confirm_quit_path(@user) %>
+            <% if @user == current_user %>
+              <tr>
+                <th class="text-right">メールアドレス : </th>
+                <td class="text-left"><%= f.text_field :email %></td>
+              </tr>
+            <% end %>
+          </table>
+          <div>
+            <p><%= f.submit "変更を保存", class: "input_btn" %></p>
+          </div>
+        <% end %>
+     </div>
+  </div>
+    <div class="col-9">
+     <div class="text-right">
+        <p><%= link_to '　戻る　', :back, class: "link_btn" %></p>
+     </div>
+    </div>
+</div>

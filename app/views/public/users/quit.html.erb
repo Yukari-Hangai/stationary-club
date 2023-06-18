@@ -1,10 +1,12 @@
-<div>
-  <h2>本当に退会しますか？</h2>
+<div style="text-align:center;">
   <div>
-    <p>退会する場合は、『退会する』をクリックしてください。</p>
-  </div>
-  <div>
-    <%= link_to '退会しない', edit_user_path(current_user.id) %>
-    <%= link_to "退会する", out_user_path(current_user.id), method: :patch %>
-  </div>
+    <p style="margin: 30px;" class="h2">本当に退会しますか？</p>
+    <div>
+      <p style="margin: 30px;" class="h4">退会する場合、『退会する』をクリックしてください。</p>
+    </div>
+    <div style="margin-top: 50px; text-align: center;" class="h5">
+      <span style="margin-right: 30px;"><%= link_to '　退会しない　', edit_user_path(current_user.id), class: "link_btn" %></span>
+      <span style="margin-left: 30px;"><%= link_to "　退会する　", out_user_path(current_user.id), method: :patch, class: "out_btn" %></span>
+    </div
 </div>
+

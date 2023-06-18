@@ -2,41 +2,45 @@
 　 <h1 style="background-image: url(<%= asset_path('h1_green.png') %>); "> 会員情報</h1>
 </div>
 
-<p> <%= notice %> </p>
-
-<%= image_tag @user.get_profile_image(150,150) %>
-<br>
-<% unless @user == current_user %>
-  <% if current_user.following?(@user) %>
-    <%= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete %>
-  <% else %>
-    <%= link_to "フォローする", user_relationships_path(@user.id), method: :post %>
-  <% end %>
-<% end %>
-
-<table>
-  <tr>
-    <th>会員ID : </th>
-    <th><%= @user.id %></th>
-  </tr>
-  <tr>
-    <th>名前 : </th>
-    <th><%= @user.name %></th>
-  </tr>
-  <tr>
-    <th>自己紹介 : </th>
-    <th><%= @user.introduction %></th>
-  </tr>
-  <% if @user == current_user %>
-    <tr>
-      <th>メールアドレス : </th>
-      <th><%= @user.email %></th>
-    </tr>
-  <% end %>
-</table>
-
-<% if @user == current_user and @user.name != "guestuser" %>
-  <%= link_to "編集", edit_user_path(@user), class: "btn btn-sm btn-success" %>
-<% end %>
-
-<%= link_to "投稿一覧へ", user_posts_path(@user), class: "btn btn-sm btn-primary" %>
+<div class="container index">
+  <div class="row">
+    <div class="mx-auto text-center">
+      <p><%= flash[:notice] %></p>
+      
+      <div>
+        <%= image_tag @user.get_profile_image(150,150) %>
+      </div>
+      <div style="margin-top: 10px;">
+        <% unless @user == current_user %>
+          <% if current_user.following?(@user) %>
+            <%= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete, class: "unfollow_btn" %>
+          <% else %>
+            <%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class: "follow_btn" %>
+          <% end %>
+        <% end %>
+      </div>
+      
+      <table class="user_edit_table mb-3">
+        <tr>
+          <th class="text-right">会員ID : </th>
+          <td class="text-left"><%= @user.id %></td>
+        </tr>
+        <tr>
+          <th class="text-right">名前 : </th>
+          <td class="text-left"><%= @user.name %></td>
+        </tr>
+        <tr>
+          <th class="text-right">自己紹介 : </th>
+          <td class="text-left"><%= @user.introduction %></td>
+        </tr>
+        <% if @user == current_user %>
+          <tr>
+            <th class="text-right">メールアドレス : </th>
+            <td class="text-left"><%= @user.email %></td>
+          </tr>
+        <% end %>
+      </table>
+      
+      <% if @user == current_user and @user.name != "guestuser" %>
+        <%= link_to "　編集　", edit_user_path(@user), class: "link_btn" %>
+      <% end %>

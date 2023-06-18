@@ -8,6 +8,8 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
+    status_text = @user.is_deleted ? "退会" : "有効"
+    flash[:notice] = "会員ステータスを#{status_text}に変更しました"
     redirect_to edit_admin_user_path(@user)
   end
   

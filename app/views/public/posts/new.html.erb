@@ -1,26 +1,31 @@
 <div style="text-align:center;">
   <h1 style="background-image: url(<%= asset_path('h1_pink.png') %>); "> 新規投稿</h1>
+  <div class="container index">
+    <div class="row">
+      <div class="mx-auto">
+        <% if @post.errors.any? %>
+          <ul>
+            <% @post.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+        
+        
+        <%= form_with model: @post do |f| %>
+          <table class="user_edit_table mb-3">
+            <tr>
+              <th class="text-right">投稿画像</th>
+              <td class="text-left"><%= f.file_field :image, accept: "image/*" %></td>
+            </tr>
+            <tr>
+              <th class="text-right">本文</th>
+              <td class="text-left"><%= f.text_area :text %></td>
+            </tr>
+          </table>
+          <%= f.submit '　投稿　', class: "input_btn" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
-
-<% if @post.errors.any? %>
-  <ul>
-    <% @post.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
-
-
-<%= form_with model: @post do |f| %>
-  <table class="table">
-    <tr>
-      <th>投稿画像</th>
-      <th><%= f.file_field :image, accept: "image/*" %></th>
-    </tr>
-    <tr>
-      <th>本文</th>
-      <th><%= f.text_area :text %></th>
-    </tr>
-  </table>
-  <%= f.submit '投稿' %>
-<% end %>

@@ -12,7 +12,7 @@
           <% if post.user.is_deleted == false %>
             <div class="col my-5" style="box-shadow: 2px 2px 6px; background: #FEFCF9;">
               <div class=" d-flex justify-content-between">
-                <div class="col-5 post">
+                <div class="col-6 post">
                   <div style="font-size: 13px;">
                     <%= link_to user_path(post.user) do %>
                       <span><%= image_tag post.user.get_profile_image(30,30) %></span>
@@ -25,7 +25,7 @@
                   </div>
                 </div>
                 <br>
-                <div class="col-3 d-flex justify-content-between">
+                <div class="col-2 d-flex justify-content-between">
                   <div style="font-size: 17px; text: left;">
                     <%= post.user.name %>:
                   </div>

@@ -1,22 +1,53 @@
-<% if posts.present? %>
-  <% posts.each do |post| %>
-    <div><%= image_tag post.get_image, size: '200x200' %></div>
-    <div>
-      <%= link_to edit_admin_user_path(user) do %>
-        <%= image_tag post.user.get_profile_image(50,50) %>
-        <%= post.user.name %>
+<div class="container index">
+  <div class="row">
+    <div class="mx-auto" style="width: 600px;">
+      <% if posts.present? %>
+        <% posts.each do |post| %>
+          <div class="col my-5" style="box-shadow: 2px 2px 6px; background: #FEFCF9;">
+            <div class=" d-flex justify-content-between">
+              <div class="col-6 post">
+                <div style="font-size: 13px;">
+                  <%= link_to edit_admin_user_path(post.user) do %>
+                    <span><%= image_tag post.user.get_profile_image(30,30) %></span>
+                    <span class="font-weight-bold"><%= post.user.name %></span>
+                  <% end %>
+                  <span style="font-size: 10px; margin-left: 20px;"><%= post.created_at.strftime('%Y年%-m月%-d日 %-H時%-M分') %></span>
+                </div>
+                <div>
+                  <%= image_tag post.get_image, size: '200x200' %>
+                </div>
+              </div>
+              <br>
+              <div class="col-2 d-flex justify-content-between">
+                <div style="font-size: 17px; text: left;">
+                  <%= post.user.name %>:
+                </div>
+              </div>
+              <div class="col-4 post_text">
+                <div style~"font-size: 20px; text: center;">
+                  <%= post.text %>
+                </div>
+                <div class="text-right">
+                  <%= link_to "削除", admin_post_path(post), method: :delete, remote: true, "data-confirm" => "本当に削除しますか？", class: "out_btn" %>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between">
+              <div>
+                <div>
+                  ♥<%= post.favorites.count %>いいね
+                </div>
+              </div>
+              <div id="post_comments_<%= post.id %>">
+                <%= render 'admin/partial_template/admin_post_comments', post: post, post_comment: post_comment %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <p>投稿はありません</p>
       <% end %>
-        <%= post.created_at.strftime('%Y年%-m月%-d日 %-H時%-M分') %>
     </div>
-    <div><%= post.text %></div>
-    <div>♥<%= post.favorites.count %>いいね</div>
-    
-    <%= link_to "削除", admin_post_path(post), method: :delete, remote: true, "data-confirm" => "本当に削除しますか？" %>
-
-    <div id="admin_post_comments">
-      <%= render 'admin/partial_template/admin_post_comments', post: post, post_comment: post_comment %>
-    </div>
-  <% end %>
-<% else %>
-  <p>投稿はありません</p>
-<% end %>
+    <div class="col paginate"><%= paginate posts %></div>
+  </div>
+</div>

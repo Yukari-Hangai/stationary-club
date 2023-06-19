@@ -6,37 +6,64 @@
 
 <div class="container index">
   <div class="row">
-    <div class="mx-auto">
+    <div class="mx-auto" style="width: 600px;">
       <% if @follower_posts.exists? %>
         <% @follower_posts.each do |post| %>
-          <div><%= image_tag post.get_image, size: '200x200' %></div>
-          <div>
-            <%= image_tag post.user.get_profile_image(50,50) %>
-            <%= post.user.name %>
-            <%= post.created_at.strftime('%Y年%-m月%-d日 %-H時%-M分') %>
-          </div>
-          <div><%= post.text %></div>
-          <div id="favorite_buttons_<%= post.id %>">
-            <%= render 'public/partial_template/favorites', post: post %>
-          </div>
-          <div>
-            <% if post.user == current_user %>
-              <%= link_to "編集", edit_post_path(post) %>
-              <%= link_to "削除", post_path(post), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-            <% end %>
-          </div>
-      
-          <div id="post_comments">
-            <%= render 'public/partial_template/post_comments', post: post, post_comment: @post_comment %>
-          </div>
-      
-          <div id="comment_form">
-            <%= render 'public/partial_template/form', post: post, post_comment: @post_comment %>
-          </div>
+          <% if post.user.is_deleted == false %>
+            <div class="col my-5" style="box-shadow: 2px 2px 6px; background: #FEFCF9;">
+              <div class=" d-flex justify-content-between">
+                <div class="col-5 post">
+                  <div style="font-size: 13px;">
+                    <%= link_to user_path(post.user) do %>
+                      <span><%= image_tag post.user.get_profile_image(30,30) %></span>
+                      <span class="font-weight-bold"><%= post.user.name %></span>
+                    <% end %>
+                    <span style="font-size: 10px; margin-left: 20px;"><%= post.created_at.strftime('%Y年%-m月%-d日 %-H時%-M分') %></span>
+                  </div>
+                  <div>
+                    <%= image_tag post.get_image, size: '200x200' %>
+                  </div>
+                </div>
+                <br>
+                <div class="col-3 d-flex justify-content-between">
+                  <div style="font-size: 17px; text: left;">
+                    <%= post.user.name %>:
+                  </div>
+                </div>
+                <div class="col-4 post_text">
+                  <div class="d-flex justify-content-between">
+                    <div style~"font-size: 20px; text: center;">
+                      <%= post.text %>
+                      <% if post.user == current_user %>
+                        <%= link_to "　編集　", edit_post_path(post), class: "link_btn" %>
+                        <%= link_to "削除", post_path(post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "out_btn" %>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex justify-content-between">
+                <div>
+                  <div id="favorite_buttons_<%= post.id %>">
+                    <%= render 'public/partial_template/favorites', post: post %>
+                  </div>
+                  <div id="comment_form">
+                    <%= render 'public/partial_template/form', post: post, post_comment: @post_comment %>
+                  </div>
+                </div>
+                <div id="post_comments_<%= post.id %>">
+                  <%= render 'public/partial_template/post_comments', post: post, post_comment: @post_comment %>
+                </div>
+              </div>
+            </div>
+          <% else %>
+            <p><%= post.user.name %>《退会済みユーザーの投稿です》</p>
+          <% end %>
         <% end %>
       <% else %>
         <p>投稿はありません</p>
       <% end %>
     </div>
+    <div class="col paginate"><%= paginate @follower_posts %></div>
   </div>
 </div>

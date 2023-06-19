@@ -6,7 +6,7 @@ class SearchesController < ApplicationController
     if @range == "会員"
       @users = User.looks(params[:search], params[:word]).page(params[:page])
     else
-      @posts = Post.looks(params[:search], params[:word])
+      @posts = Post.looks(params[:search], params[:word]).page(params[:page])
       @user = @posts.pluck(:user_id)
       @post_comment = PostComment.new
     end

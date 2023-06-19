@@ -17,7 +17,7 @@ class Public::PostsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @posts = Post.where(user_id: @user.id).includes(:user).order("created_at DESC")
+    @posts = Post.where(user_id: @user.id).includes(:user).order("created_at DESC").page(params[:page])
     @post_comment = PostComment.new
   end
 
@@ -38,7 +38,7 @@ class Public::PostsController < ApplicationController
   end
 
   def my_page
-    @follower_posts = Post.where(user_id: [*current_user.following_ids])
+    @follower_posts = Post.where(user_id: [*current_user.following_ids]).page(params[:page])
     @post_comment = PostComment.new
   end
 

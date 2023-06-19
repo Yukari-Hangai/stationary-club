@@ -53,7 +53,7 @@
 .out_btn {
   display       : inline-block;
   border-radius : 20%;          /* 角丸       */
-  font-size     : 9pt;        /* 文字サイズ */
+  font-size     : 12pt;        /* 文字サイズ */
   text-align    : center;      /* 文字位置   */
   cursor        : pointer;     /* カーソル   */
   padding       : 7px 0px;   /* 余白       */
@@ -247,4 +247,29 @@ a:hover {
 
 .user_profile_image {
   text-align: center;
+}
+
+.textbox_002-label,
+.textbox_002 {
+    color: #333;
+}
+
+.textbox_002-label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: .9em;
+}
+
+.textbox_002 {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #d2d2d2;
+    border-radius: 25px;
+    background: #f7f7f7;
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+.textbox_002::placeholder {
+    color: #999;
 }

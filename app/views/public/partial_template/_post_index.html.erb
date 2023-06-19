@@ -1,46 +1,55 @@
-<div class="container index">
+<div class="container">
   <div class="row">
-    <div class="mx-auto">
+    <div class="col-3"></div>
+    <div class="col align-items-center">
       <% if posts.present? %>
         <% posts.each do |post| %>
           <% if post.user.is_deleted == false %>
-          <div class="d-flex justify-content-between">
-            <span style="font-size: 13px;">
-              <%= image_tag post.user.get_profile_image(30,30) %>
-              <%= post.user.name %>
-            </span>
-            <span style="font-size: 10px;">
-              <%= post.created_at.strftime('%Y年%-m月%-d日 %-H時%-M分') %>
-            </span>
-          </div>
-          <div class="text-center">
-            <%= image_tag post.get_image, size: '200x200' %>
-          </div>
-          <div id="favorite_buttons_<%= post.id %>" class="">
-            <%= render 'public/partial_template/favorites', post: post %>
-          </div>
+            <div class="my-5" style="box-shadow: 2px 2px 6px; background: #FEFCF9;">
+              <div class=" d-flex justify-content-between">
+                <div class="post">
+                  <div style="font-size: 13px;">
+                    <span><%= image_tag post.user.get_profile_image(30,30) %></span>
+                    <span class="font-weight-bold"><%= post.user.name %></span>
+                    <span style="font-size: 10px; margin-left: 20px;"><%= post.created_at.strftime('%Y年%-m月%-d日 %-H時%-M分') %></span>
+                  </div>
+                  <div>
+                    <%= image_tag post.get_image, size: '200x200' %>
+                  </div>
+                </div>
+                <br><div class="d-flex justify-content-between">
+                  <div style="font-size: 20px; text: left;">
+                    <%= post.user.name %>:
+                  </div>
+                </div>
+                <div class="post_text">
+                  <div class="d-flex justify-content-between">
 
-          <div style="font-size: 20px; text: left;">
-            <%= post.user.name %>:<%= post.text %>
-          </div>
-
-
-          <div>
-            <% if post.user == current_user %>
-              <%= link_to "編集", edit_post_path(post) %>
-              <%= link_to "削除", post_path(post), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-            <% end %>
-          </div>
-
-          <div id="post_comments_<%= post.id %>">
-            <%= render 'public/partial_template/post_comments', post: post, post_comment: post_comment %>
-          </div>
-
-          <div id="comment_form">
-            <%= render 'public/partial_template/form', post: post, post_comment: post_comment %>
-          </div>
+                    <div style~"font-size: 20px; text: center;">
+                      <%= post.text %>
+                      <% if post.user == current_user %>
+                        <%= link_to "　編集　", edit_post_path(post), class: "link_btn" %>
+                        <%= link_to "削除", post_path(post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "out_btn" %>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex justify-content-between">
+                <div>
+                  <div id="favorite_buttons_<%= post.id %>">
+                    <%= render 'public/partial_template/favorites', post: post %>
+                  </div>
+                  <div id="comment_form">
+                    <%= render 'public/partial_template/form', post: post, post_comment: post_comment %>
+                  </div>
+                </div>
+                <div id="post_comments_<%= post.id %>">
+                  <%= render 'public/partial_template/post_comments', post: post, post_comment: post_comment %>
+                </div>
+              </div>
+            </div>
           <% else %>
-            <%= "-----------------------------------------------" %>
             <p><%= post.user.name %>《退会済みユーザーの投稿です》</p>
           <% end %>
         <% end %>
@@ -48,5 +57,6 @@
         <p>投稿はありません</p>
       <% end %>
     </div>
+    <div class="col-3"></div>
   </div>
 </div>

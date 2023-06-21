@@ -109,7 +109,7 @@
     </nav>
 
     <main class="main" style="padding: 0px 0px 0px 360px;" data-booted="true">
-      <div class=" col-9 main_wrap" style="background-image: image-url("background_image.jpeg"); background-repeat: repeat; overflow-y: auto; background-attachment: local;"><!--各画面部分-->
+      <div class=" col-9 main_wrap" style="background-image: url(<%= image_url("background_image.jpeg") %>); background-repeat: repeat; overflow-y: auto; background-attachment: local;"><!--各画面部分-->
             <div class="layer vh-100 mx-0">
               <%= yield %>
             </div>

@@ -1,5 +1,5 @@
   <div style="text-align:center;">
-    <h1 style="background-image: url(<%= asset_path('h1_blue.png') %>);"><%= @user.name %>の投稿一覧</h1>
+    <h1 style="background-image: image-url("h1_blue.png");"><%= @user.name %>の投稿一覧</h1>
   </div>
   
   <%= render 'admin/partial_template/admin_post_index', posts: @user_posts, post_comment: @post_comment, user: @user %>

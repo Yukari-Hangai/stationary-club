@@ -1,11 +1,11 @@
 <% if @user == current_user %>
   <div style="text-align:center;">
-    <h1 style="background-image: url(<%= asset_path('h1_blue.png') %>);">自分の投稿一覧</h1>
+    <h1 style="background-image: image-url("h1_blue.png");">自分の投稿一覧</h1>
   </div>
   <%= render 'public/partial_template/post_index', posts: @posts, post_comment: @post_comment, user: @user %>
 <% else %>
   <div style="text-align:center;">
-    <h1 style="background-image: url(<%= asset_path('h1_blue.png') %>);"><%= @user.name %>の投稿一覧</h1>
+    <h1 style="background-image: image-url("h1_blue.png");"><%= @user.name %>の投稿一覧</h1>
   </div>
   <%= render 'public/partial_template/post_index', posts: @posts, post_comment: @post_comment, user: @user %>
 <% end %>

@@ -1,5 +1,5 @@
 <div style="text-align:center;">
-  <h1 style="background-image: image-url("h1_blue.png"); "> 管理者ログイン</h1>
+  <h1 style="background-image: url(<%= asset_path("h1_blue.png") %>); "> 管理者ログイン</h1>
 </div>
 
 <p> <%= notice %> </p>
@@ -11,19 +11,19 @@
         <p class="label mb-0"><%= f.label :email %><br /></p>
         <p class="form ml-3"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></p>
       </div>
-    
+
       <div class="field">
         <p class="label mb-0"><%= f.label :password %><br /></p>
         <p class="form ml-3"><%= f.password_field :password, autocomplete: "current-password" %></p>
       </div>
-    
+
       <% if devise_mapping.rememberable? %>
         <div class="field mt-5">
           <%= f.check_box :remember_me %>
           <%= f.label :remember_me %>
         </div>
       <% end %>
-    
+
       <div class="m-5 text-center">
         <%= f.submit "ログインする", class: "input_btn" %>
       </div>

@@ -1,5 +1,5 @@
 <div style="text-align:center;">
-　 <h1 style="background-image: image-url("h1_pink.png");"> お気に入り投稿一覧</h1>
+　 <h1 style="background-image: url(<%= asset_path("h1_pink.png") %>);"> お気に入り投稿一覧</h1>
 </div>
 
 <%= render 'public/partial_template/post_index', posts: @favorite_posts, post_comment: @post_comment %>

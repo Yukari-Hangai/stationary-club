@@ -1,5 +1,5 @@
 <div style="text-align:center;">
-  <h1 style="background-image: image-url("h1_yellow.png");"> フォロワー一覧</h1>
+  <h1 style="background-image: url(<%= asset_path("h1_yellow.png") %>);"> フォロワー一覧</h1>
 </div>
 
 <%= render 'public/partial_template/user_index', users: @users %>

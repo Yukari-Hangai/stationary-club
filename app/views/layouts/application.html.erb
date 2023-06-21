@@ -17,7 +17,7 @@
 
 
   <body>
-    <nav class="side_bar side_bar_fixed " style="height: 100vh; top: 0px; transform: translateX(0%); width: 360px; max-height: calc(100% - 0px); background-image: image-url("sidebar.jpg"); background-size: cover;">
+    <nav class="side_bar side_bar_fixed " style="height: 100vh; top: 0px; transform: translateX(0%); width: 360px; max-height: calc(100% - 0px); background-image: url(<%= asset_path("sidebar.jpg") %>); background-size: cover;">
       <div class="layer vh-100 mx-0 ">
 
           <% if user_signed_in? %><!--ユーザーログイン時のロゴと新規投稿リンク-->
@@ -109,7 +109,7 @@
     </nav>
 
     <main class="main" style="padding: 0px 0px 0px 360px;" data-booted="true">
-      <div class=" col-9 main_wrap" style="background-image: url(<%= image_url("background_image.jpeg") %>); background-repeat: repeat; overflow-y: auto; background-attachment: local;"><!--各画面部分-->
+      <div class=" col-9 main_wrap" style="background-image: url(<%= asset_path("background_image.jpg") %>); background-repeat: repeat; overflow-y: auto; background-attachment: local;"><!--各画面部分-->
             <div class="layer vh-100 mx-0">
               <%= yield %>
             </div>

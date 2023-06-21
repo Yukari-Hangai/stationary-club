@@ -1,5 +1,5 @@
 <div style="text-align:center;">
-　 <h1 style="background-image: image-url("h1_blue.png"); "> 会員情報編集</h1>
+　 <h1 style="background-image: url(<%= asset_path("h1_blue.png") %>); "> 会員情報編集</h1>
 </div>
 
 <div class="container index">
@@ -11,7 +11,7 @@
         <%= form_with model: @user, url: user_path, method: :patch do |f| %>
           <%= image_tag @user.get_profile_image(150,150) %>
           <p><%= f.file_field :profile_image, accept: "image/*" %></p>
-          
+
           <table class="user_edit_table mb-3">
             <tr>
               <th class="text-right">名前 : </th>

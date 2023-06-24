@@ -6,7 +6,7 @@
   <div class="row">
     <div class="mx-auto text-center">
       <p><%= flash[:notice] %></p>
-      
+
       <div>
         <%= image_tag @user.get_profile_image(150,150) %>
       </div>
@@ -19,7 +19,7 @@
           <% end %>
         <% end %>
       </div>
-      
+
       <table class="user_edit_table mb-3">
         <tr>
           <th class="text-right">会員ID : </th>
@@ -40,7 +40,7 @@
           </tr>
         <% end %>
       </table>
-      
+
       <% if @user == current_user and @user.name != "guestuser" %>
         <%= link_to "　編集　", edit_user_path(@user), class: "link_btn" %>
       <% end %>
@@ -48,7 +48,7 @@
   </div>
   <div class="col-9">
     <div class="text-right">
-      <p><%= link_to '　戻る　', :back, class: "link_btn" %></p>
+      <p><%= link_to '　投稿一覧　', user_posts_path(@user), class: "link_btn" %></p>
     </div>
   </div>
 </div>

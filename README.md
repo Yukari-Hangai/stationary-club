@@ -1,4 +1,5 @@
 # Stationary Club
+![logo](https://github.com/Yukari-Hangai/stationary-club/assets/129511468/6b868a0c-dec6-4bc2-b5ec-74bcb9e0fe31)
 
 ## サイト概要
 ### サイトテーマ
@@ -23,13 +24,13 @@ PCやタブレットなどが会社・学校に普及してきている中で文
 - 文房具好きな人と交流したいとき
 
 ## 設計書
-- 実装機能リスト　：　https://docs.google.com/spreadsheets/d/13ZOI21mspb5SqB8EMVNbT5WW2kVuoJ1U-kSvjJyTCQ4/edit?usp=sharing
-- WBS　：　https://docs.google.com/spreadsheets/d/1U4VVAxsSe6EF8_yzNO82Kg5cIh9laCvUqEHdAeX6NiQ/edit?usp=sharing
-- 画面遷移図　：　https://drive.google.com/file/d/1XDg8T1LULs9T9GucSyQjumeUNMtmCmoB/view?usp=sharing
-- ワイヤーフレーム　：　https://drive.google.com/file/d/1c3hWFWYliINy57qbZXlIwWk1Xy_uoFTB/view?usp=sharing
-- ER図　；　https://drive.google.com/file/d/1cNKW1HON2bfbGMENeiz5rrwZ3CMM8qSh/view?usp=sharing
-- テーブル定義所　：　https://docs.google.com/spreadsheets/d/1lbULExovYqHDSCH9nkTdmJJuQHkjPXijbPphX4m6Dxc/edit?usp=sharing
-- アプリケーション詳細設計書　：　https://docs.google.com/spreadsheets/d/1SBc5-1MBezF8NiLa1rt_fcQ4kkAHZlZygGXvElnMNNU/edit?usp=sharing
+- 実装機能リスト：https://docs.google.com/spreadsheets/d/13ZOI21mspb5SqB8EMVNbT5WW2kVuoJ1U-kSvjJyTCQ4/edit?usp=sharing
+- WBS：https://docs.google.com/spreadsheets/d/1U4VVAxsSe6EF8_yzNO82Kg5cIh9laCvUqEHdAeX6NiQ/edit?usp=sharing
+- 画面遷移図：https://drive.google.com/file/d/1XDg8T1LULs9T9GucSyQjumeUNMtmCmoB/view?usp=sharing
+- ワイヤーフレーム：https://drive.google.com/file/d/1c3hWFWYliINy57qbZXlIwWk1Xy_uoFTB/view?usp=sharing
+- ER図：https://drive.google.com/file/d/1cNKW1HON2bfbGMENeiz5rrwZ3CMM8qSh/view?usp=sharing
+- テーブル定義所：https://docs.google.com/spreadsheets/d/1lbULExovYqHDSCH9nkTdmJJuQHkjPXijbPphX4m6Dxc/edit?usp=sharing
+- アプリケーション詳細設計書：https://docs.google.com/spreadsheets/d/1SBc5-1MBezF8NiLa1rt_fcQ4kkAHZlZygGXvElnMNNU/edit?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -39,4 +40,6 @@ PCやタブレットなどが会社・学校に普及してきている中で文
 - IDE：Cloud9
 
 ## 使用素材
-使用素材は検討中です。
+- illustAC：https://www.ac-illust.com/
+- photoAC：https://www.photo-ac.com/
+- えんぴつ素材：https://enpitsu-sozai.com/

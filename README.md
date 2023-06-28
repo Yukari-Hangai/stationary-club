@@ -43,3 +43,4 @@ PCやタブレットなどが会社・学校に普及してきている中で文
 - illustAC：https://www.ac-illust.com/
 - photoAC：https://www.photo-ac.com/
 - えんぴつ素材：https://enpitsu-sozai.com/
+- Canva：https://www.canva.com/

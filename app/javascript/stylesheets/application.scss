@@ -9,24 +9,32 @@
   color: #615F62;
 }
 
+main {
+  max-width: 100%;
+}
+
+.img {
+  max-width: 100%;
+}
+
 .input_btn {
-    border-radius : 14%;          /* 角丸       */
-    font-size     : 12pt;        /* 文字サイズ */
-    text-align    : center;      /* 文字位置   */
-    cursor        : pointer;     /* カーソル   */
-    padding       : 7px 2px;   /* 余白       */
-    background    : #b5a399;     /* 背景色     */
-    color         : #eee0ce;     /* 文字色     */
-    line-height   : 1em;         /* 1行の高さ  */
-    transition    : .3s;         /* なめらか変化 */
-    box-shadow    : 5px 5px 3px #666666;  /* 影の設定 */
-    border        : 2px solid #b5a399;    /* 枠の指定 */
+  border-radius : 14%;          /* 角丸       */
+  font-size     : 12pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 7px 2px;   /* 余白       */
+  background    : #b5a399;     /* 背景色     */
+  color         : #eee0ce;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 5px 5px 3px #666666;  /* 影の設定 */
+  border        : 2px solid #b5a399;    /* 枠の指定 */
 }
 
 .input_btn:hover {
-    box-shadow    : none;        /* カーソル時の影消去 */
-    color         : #b5a399;     /* 背景色     */
-    background    : #eee0ce;     /* 文字色     */
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : #b5a399;     /* 背景色     */
+  background    : #eee0ce;     /* 文字色     */
 }
 
 .link_btn {
@@ -44,10 +52,10 @@
 }
 
 .link_btn:hover {
-    background    : #6d4845; 
-    color         : #eee0ce;
-    text-decoration: none;
-    opacity       : 1;           /* カーソル時透明度 */
+  background    : #6d4845; 
+  color         : #eee0ce;
+  text-decoration: none;
+  opacity       : 1;           /* カーソル時透明度 */
 }
 
 .out_btn {
@@ -65,10 +73,10 @@
 }
 
 .out_btn:hover {
-    background    : #eee0ce; 
-    color         : #A62925;
-    text-decoration: none;
-    opacity       : 1;           /* カーソル時透明度 */
+  background    : #eee0ce; 
+  color         : #A62925;
+  text-decoration: none;
+  opacity       : 1;           /* カーソル時透明度 */
 }
 
 .follow_btn {
@@ -86,11 +94,11 @@
   box-shadow    : 5px 5px 8px #666666;  /* 影の設定 */
 }
 .follow_btn:hover {
-    background    : #eee0ce; 
-    color         : #006f5f;
-    box-shadow    : none; 
-    text-decoration: none;
-    opacity       : 1;           /* カーソル時透明度 */
+  background    : #eee0ce; 
+  color         : #006f5f;
+  box-shadow    : none; 
+  text-decoration: none;
+  opacity       : 1;           /* カーソル時透明度 */
 }
 
 .unfollow_btn {
@@ -107,61 +115,61 @@
   transition    : .3s;         /* なめらか変化 */
 }
 .unfollow_btn:hover {
-    background    : #006f5f; 
-    color         : #eee0ce;
-    text-decoration: none;
-    opacity       : 1;           /* カーソル時透明度 */
+  background    : #006f5f; 
+  color         : #eee0ce;
+  text-decoration: none;
+  opacity       : 1;           /* カーソル時透明度 */
 }
 
 .layer {
-    background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 
 .side_bar {
-    -webkit-overflow-scrolling: touch;
-    display: flex;
-    flex-direction: column;
-    left: 0;
-    max-width: 100%;
-    overflow: hidden;
-    pointer-events: auto;
-    top: 0;
-    transition-duration: .2s;
-    transition-timing-function: cubic-bezier(.4,0,.2,1);
-    will-change: transform;
-    transition-property: transform,visibility,width;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  max-width: 100%;
+  overflow: hidden;
+  pointer-events: auto;
+  top: 0;
+  transition-duration: .2s;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  will-change: transform;
+  transition-property: transform,visibility,width;
 }
 
 .side_bar_fixed {
-    position: fixed;
-    z-index: 1;
+  position: fixed;
+  z-index: 1;
 }
 
 .logo_icon{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo_icon>p {
-    width: 49%;
+  width: 49%;
 }
 
 .logo_icon>.information {
-    width: 49%;
+  width: 49%;
 }
 
 h1 {
-    margin:  0;                 /* デフォルトCSS打ち消し */
-    font-size:  30px;           /* 文字サイズ指定 */
-    position:  relative;        /* 位置調整 */
-    font-weight:  normal;       /* 文字の太さ調整 */
-    display:  inline-block;     /* インラインブロックにする */
-    padding:  10px;             /* 余白指定 */
-    margin-bottom: 15px;        /* 周りの余白指定 */
-    border-radius:  2px;        /* 角丸指定 */
-    background-size: 100% 100%;
+  margin:  0;                 /* デフォルトCSS打ち消し */
+  font-size:  30px;           /* 文字サイズ指定 */
+  position:  relative;        /* 位置調整 */
+  font-weight:  normal;       /* 文字の太さ調整 */
+  display:  inline-block;     /* インラインブロックにする */
+  padding:  10px;             /* 余白指定 */
+  margin-bottom: 15px;        /* 周りの余白指定 */
+  border-radius:  2px;        /* 角丸指定 */
+  background-size: 100% 100%;
 }
 
 .top_about{
@@ -192,19 +200,19 @@ a:hover {
 }
 
 .index {
-    min-height: 92vh; /* ←コンテンツの高さの最小値＝ブラウザの高さに指定 */
-    position: relative;/* ←相対位置 */
-    padding-bottom: 60px; /* ←フッターの高さを指定 */
-    box-sizing: border-box;
+  min-height: 92vh; /* ←コンテンツの高さの最小値＝ブラウザの高さに指定 */
+  position: relative;/* ←相対位置 */
+  padding-bottom: 60px; /* ←フッターの高さを指定 */
+  box-sizing: border-box;
 }
 
 .table td {
-    vertical-align: initial;
+  vertical-align: initial;
 }
 
 .paginate {
-    position: absolute;/* ←絶対位置 */
-    bottom: 0;
+  position: absolute;/* ←絶対位置 */
+  bottom: 0;
 }
 
 .pagination {
@@ -251,25 +259,25 @@ a:hover {
 
 .textbox_002-label,
 .textbox_002 {
-    color: #333;
+  color: #333;
 }
 
 .textbox_002-label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: .9em;
+  display: block;
+  margin-bottom: 5px;
+  font-size: .9em;
 }
 
 .textbox_002 {
-    width: 100%;
-    padding: 8px 10px;
-    border: 1px solid #d2d2d2;
-    border-radius: 25px;
-    background: #f7f7f7;
-    font-size: 1em;
-    line-height: 1.5;
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #d2d2d2;
+  border-radius: 25px;
+  background: #f7f7f7;
+  font-size: 1em;
+  line-height: 1.5;
 }
 
 .textbox_002::placeholder {
-    color: #999;
+  color: #999;
 }

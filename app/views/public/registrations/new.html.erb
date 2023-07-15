@@ -8,17 +8,17 @@
   <div class="d-flex align-items-center justify-content-center">
     <%= form_with model: @user, url: user_registration_path do |f| %>
       <%= render "public/shared/error_messages", resource: resource %>
-    
+
       <div class="field">
         <p class="label mb-0"><%= f.label :name %><br></p>
         <p class="form ml-3"><%= f.text_field :name, autofocus: true %></p>
       </div>
-    
+
       <div class="field">
         <p class="label mb-0"><%= f.label :email %><br /></p>
         <p class="form ml-3"><%= f.email_field :email, autocomplete: "email" %></p>
       </div>
-    
+
       <div class="field">
         <p class="label mb-0"><%= f.label :password %>
         <% if @minimum_password_length %>
@@ -26,16 +26,17 @@
         <% end %><br /></p>
         <p class="form ml-3"><%= f.password_field :password, autocomplete: "new-password" %></p>
       </div>
-    
+
       <div class="field">
         <p class="label mb-0"><%= f.label :password_confirmation %><br /></p>
         <p class="form ml-3"><%= f.password_field :password_confirmation, autocomplete: "new-password" %></p>
       </div>
-    
+
       <div class="m-5 text-center">
-        <%= f.submit "新規登録", class: "input-btn" %>
+        <%= f.submit "新規登録", class: "input_btn" %>
       </div>
     <% end %>
-    
+
+
   </div>
 </div>

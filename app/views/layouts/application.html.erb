@@ -36,8 +36,8 @@
         </div>
 
         <div id="side_menu" class="vh-100"
-             style="background-image: url(<%= asset_path("sidebar.jpg") %>); background-size: cover;">
-          <div class="layer vh-100 mx-0">
+             style="background-image: url(<%= asset_path("sidebar.jpg") %>); background-size: cover; background-repeat: repeat; overflow-y: auto; background-attachment: local;">
+          <div class="layer vh-100 mx-0" style="background-repeat: repeat; overflow-y: auto; background-attachment: local;">
             <div class="side_bar-wrapper d-none d-md-block">
             <ul class="sidebar">
             <% if user_signed_in? %><!--ユーザーログイン時のロゴと新規投稿リンク-->
@@ -134,7 +134,7 @@
 
     <main class="main" data-booted="true">
       <div class=" col-9 main_wrap" style="background-image: url(<%= asset_path("background_image.jpg") %>); background-repeat: repeat; overflow-y: auto; background-attachment: local;"><!--各画面部分-->
-            <div class="layer vh-100 mx-0">
+            <div class="layer vh-100 mx-0" style="background-repeat: repeat; overflow-y: auto; background-attachment: local;">
               <%= yield %>
             </div>
       </div>

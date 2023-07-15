@@ -17,7 +17,7 @@ class Public::PostsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @posts = Post.where(user_id: @user.id).includes(:user).order("created_at DESC").page(params[:page])
+    @posts = Post.where(user_id: @user.id).includes(:user).order("created_at DESC").page(params[:page]).per(5)
     @post_comment = PostComment.new
   end
 

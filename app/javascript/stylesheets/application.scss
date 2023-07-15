@@ -8,12 +8,56 @@
   font-family: 'Kaisei Decol', serif;
   color: #615F62;
 }
-@media screen and (max-width: 767px) {
+
+#side_bar {
+  position: fixed;
+  z-index: 9999;
+}
+
+.layer {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.logo_icon{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo_icon>p {
+  width: 49%;
+}
+
+.logo_icon>.information {
+  width: 49%;
+}
+
+ul{
+  padding-left:0;
+}
+
+li{
+  list-style:none;
+}
+
+.main {
+  padding: 0px 0px 0px 320px;
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    padding: 0px 0px 0px 40px;
+  }
+
   #hm-icon {
-    position: fixed;
-    right: 20px;
-    top: 20px;
-    z-index: 10;
+    // position: fixed;
+    // right: 20px;
+    // top: 20px;
+    // z-index: 9999;
+    position: absolute;
+    top: 15px;
+    right: 6px;
+    z-index: 9999;
   }
   .menu-trigger,
   .menu-trigger span {
@@ -21,10 +65,10 @@
     transition: all .4s;
     box-sizing: border-box;
   }
-  
+
   .menu-trigger {
     position: relative;
-    width: 25px;
+    width: 30px;
     height: 22px;
   }
   .menu-trigger span {
@@ -46,36 +90,46 @@
   }
   .menu-trigger.active span:nth-child(1) {
     -webkit-transform: translateY(20px) rotate(-45deg);
-    transform: translateY(20px) rotate(-45deg);
-    background-color: #fff;
+    transform: translateY(16px) rotate(-45deg);
+    background-color: #6F4A2A;
   }
   .menu-trigger.active span:nth-child(2) {
     opacity: 0;
   }
   .menu-trigger.active span:nth-child(3) {
-    -webkit-transform: translateY(-20px) rotate(45deg);
-    transform: translateY(-20px) rotate(45deg);
-    background-color: #fff;
+    -webkit-transform: translateY(-2px) rotate(45deg);
+    transform: translateY(-2px) rotate(45deg);
+    background-color: #6F4A2A;
   }
-  
-  .side_bar .side_bar_fixed {
-    position: none;
-    padding-left: -300px;
-    top: 0;
-    height: 100%;
-    width: 300px;
-    -webkit-transform: translateX(100%);
-    transform: translateX(-100%);
-  }
-  
-  .side_bar .side_bar_fixed .open {
-    -webkit-transform: translateX(0%);
-    transform: translateX(0%);/*メニューを元の位置へ戻す*/
-  }
-}
 
-main {
-  max-width: 100%;
+  #side_bar {
+    position: fixed;
+    // transform: translate(-320px); mainを広げてside_barを-320動かすのではなく、close時はd-none非表示にする
+    top: 0;
+    left: 0;
+    width: 40px;
+  }
+
+  .open {
+    overflow: hidden;
+    // transform: translate(360px,0,0);
+    // transform: translate(0) !important;
+    width: 360px !important;
+    // z-index: 999;
+    // transition-duration: 1s;
+    // animation: open-animation forwards 3s;
+  }
+  //↓サイドバーのアニメーションとして試した結果close時に適用できないため断念
+  // @keyframes close-animation{
+  //   0%{
+  //     width: 100%;
+  //   }
+
+  //   100%{
+  //     width: 0%;
+  //   }
+  // }
+
 }
 
 .img {
@@ -117,7 +171,7 @@ main {
 }
 
 .link_btn:hover {
-  background    : #6d4845; 
+  background    : #6d4845;
   color         : #eee0ce;
   text-decoration: none;
   opacity       : 1;           /* カーソル時透明度 */
@@ -138,7 +192,7 @@ main {
 }
 
 .out_btn:hover {
-  background    : #eee0ce; 
+  background    : #eee0ce;
   color         : #A62925;
   text-decoration: none;
   opacity       : 1;           /* カーソル時透明度 */
@@ -159,9 +213,9 @@ main {
   box-shadow    : 5px 5px 8px #666666;  /* 影の設定 */
 }
 .follow_btn:hover {
-  background    : #eee0ce; 
+  background    : #eee0ce;
   color         : #006f5f;
-  box-shadow    : none; 
+  box-shadow    : none;
   text-decoration: none;
   opacity       : 1;           /* カーソル時透明度 */
 }
@@ -180,49 +234,12 @@ main {
   transition    : .3s;         /* なめらか変化 */
 }
 .unfollow_btn:hover {
-  background    : #006f5f; 
+  background    : #006f5f;
   color         : #eee0ce;
   text-decoration: none;
   opacity       : 1;           /* カーソル時透明度 */
 }
 
-.layer {
-  background-color: rgba(255, 255, 255, 0.3);
-}
-
-
-.side_bar {
-  //-webkit-overflow-scrolling: touch;
-  //display: flex;
-  flex-direction: column;
-  left: 0;
-  max-width: 100%;
-  //overflow: hidden;
-  //pointer-events: auto;
-  top: 0;
-  //transition-duration: .2s;
-  //transition-timing-function: cubic-bezier(.4,0,.2,1);
-  //will-change: transform;
-  //transition-property: transform,visibility,width;
-}
-
-.side_bar_fixed {
-  position: fixed;
-}
-
-.logo_icon{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo_icon>p {
-  width: 49%;
-}
-
-.logo_icon>.information {
-  width: 49%;
-}
 
 h1 {
   margin:  0;                 /* デフォルトCSS打ち消し */
@@ -295,17 +312,17 @@ a:hover {
 }
 
 /* 表示しているページ番号のデザイン */
-.pagination>.active>a {     
+.pagination>.active>a {
   background: #6d4845;     /*背景の色を変える*/
   border-radius: 15px;     /*角を丸くする*/
 }
 
 /*ホバー時のデザイン*/
-.pagination a:hover {        
+.pagination a:hover {
   border-radius: 15px;    /*角を丸くする*/
   background: #6F4A2A;
   opacity       : 3;
-  color:#eee0ce;  
+  color:#eee0ce;
 }
 
 .user_edit_table {

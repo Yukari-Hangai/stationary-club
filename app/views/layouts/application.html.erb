@@ -90,14 +90,16 @@
 
             <% elsif admin_signed_in? %><!--管理者ヘッダー-->
               <li class="logo_icon mx-auto">
-                <p class="logo mr-5">
+                <p class="logo">
                   <%= link_to admin_path do %>
                     <%= image_tag 'logo.png', size: '200x200' %>
                   <% end %>
                 </p>
-                <p>管理者<br>ログイン中</p>
+                <p class="post_icon">
+                  管理者<br>ログイン中
+                </p>
               </li>
-              <li class="search_form mx-5">
+              <li class="search_form ml-5">
                 <%= form_with url: search_path, local: true, method: :get do |f| %>
                   <p>
                     <%= f.text_field :word %>

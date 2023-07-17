@@ -42,7 +42,7 @@
             <ul class="sidebar">
             <% if user_signed_in? %><!--ユーザーログイン時のロゴと新規投稿リンク-->
               <li class="logo_icon mx-auto">
-                <p class="logo mr-5">
+                <p class="logo">
                   <%= link_to my_page_path do %>
                     <%= image_tag 'logo.png', size: '200x200' %>
                   <% end %>
@@ -58,7 +58,7 @@
 
             <% if user_signed_in? %><!--ユーザーログイン時のメニュー-->
               <%= link_to user_path(current_user) do %>
-                <li class="logo_icon mx-5">
+                <li class="logo_icon ml-5 mb-3">
                   <figure class="icon"><%= image_tag current_user.get_profile_image(150,150) %></figure>
                   <div class="information">
                     <p><%= " ID ： " %><%= current_user.id %></p>
@@ -66,13 +66,13 @@
                   </div>
                 </li>
               <% end %>
-              <li class="menu mx-5">
+              <li class="menu ml-5">
                 <p><%= link_to "フォロー一覧", followings_path %></p><br>
                 <p><%= link_to "フォロワー一覧", followers_path %><p><br>
                 <p><%= link_to "投稿一覧", user_posts_path(current_user) %><p><br>
                 <p><%= link_to "お気に入り投稿一覧",favorites_user_path(current_user) %></p><br>
               </li>
-              <li class="search_form mx-5">
+              <li class="search_form ml-5">
                 <%= form_with url: search_path, local: true, method: :get do |f| %>
                   <p>
                     <%= f.text_field :word %>
@@ -84,7 +84,7 @@
                   </p>
                 <% end %>
               </li>
-              <li class="logout mx-5">
+              <li class="logout ml-5">
                 <p><br><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
               </li>
 
@@ -114,7 +114,7 @@
               </li>
 
             <% else %><!--非ログイン時のメニュー-->
-              <li class="logo_icon mx-5">
+              <li class="logo_icon mx-auto">
                 <p class="logo mr-5">
                   <%= image_tag 'logo.png', size: '200x200' %>
                 </p>

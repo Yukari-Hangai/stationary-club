@@ -38,7 +38,7 @@ class Public::PostsController < ApplicationController
   end
 
   def my_page
-    @follower_posts = Post.where(user_id: [*current_user.following_ids]).page(params[:page])
+    @follower_posts = Post.where(user_id: [*current_user.following_ids]).page(params[:page]).per(5)
     @post_comment = PostComment.new
   end
 

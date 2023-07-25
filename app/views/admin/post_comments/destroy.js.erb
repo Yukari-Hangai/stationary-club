@@ -1,1 +1,1 @@
-$('#post_comments_<%= @post.id %>').html("<%= j(render "admin/partial_template/admin_post_comments", post: @post, post_comments: @post_comments ) %>");
+$('#post_comments_<%= @post.id %>').html("<%= j(render "admin/partial_template/admin_post_comments", post: @post ) %>");

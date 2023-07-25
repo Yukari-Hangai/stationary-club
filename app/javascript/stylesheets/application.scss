@@ -362,8 +362,15 @@ a:hover {
   background: #f7f7f7;
   font-size: 1em;
   line-height: 1.5;
+  flex-grow: 1;
 }
 
 .textbox_002::placeholder {
   color: #999;
+}
+
+.index-post-img{
+  width: 200px;
+  height: 200px;
+  object-fit: contain; // or cover;s
 }

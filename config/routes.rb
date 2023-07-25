@@ -1,12 +1,5 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'relationships/followings'
-    get 'relationships/followers'
-    get 'users/show'
-    get 'users/edit'
-    get 'user/show'
-    get 'user/edit'
-  end
+
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   #↓skipで不要なルーティング削除
@@ -17,10 +10,10 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
-  
+
   root to: 'homes#top'
   get "search" => "searches#search"
-  
+
 #会員側ルーティング
   scope module: :public do
     get 'posts/my_page' => 'posts#my_page', as: 'my_page'
@@ -41,7 +34,7 @@ Rails.application.routes.draw do
       get 'followers' => 'relationships#followers', as: 'followers'
   end
 
-  
+
   #管理者側ルーティング
   namespace :admin do
     get '/' => 'homes#top'
@@ -52,10 +45,10 @@ Rails.application.routes.draw do
       resources :posts, only: [:index]
     end
   end
-  
+
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
-  
+
 
 end

@@ -3,15 +3,23 @@
   <div class="container index">
     <div class="row">
       <div class="mx-auto">
+        <% if @post.errors.any? %>
+          <ul>
+            <% @post.errors.full_messages.each do |message| %>
+              <li style="color: #A62925;"><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+
         <%= form_with model: @post, url: post_path, method: :patch do |f| %>
-          <table class="table user_edit_table mb-3">
-            <tr>
+          <table class="table table-borderless user_edit_table mb-3">
+            <tr >
               <th class="text-right">投稿画像</th>
               <td class="text-left"><%= f.file_field :image, accept: "image/*" %></td>
             </tr>
             <tr>
               <th class="text-right">本文</th>
-              <td class="text-left"><%= f.text_area :text %></td>
+              <td class="text-left"><%= f.text_area :text, class: "textbox_002" %></td>
             </tr>
           </table>
             <%= f.submit '　保存　', class: "input_btn" %>

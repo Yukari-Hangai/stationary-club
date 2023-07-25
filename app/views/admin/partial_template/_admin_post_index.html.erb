@@ -14,7 +14,7 @@
                   <span style="font-size: 10px; margin-left: 20px;"><%= post.created_at.strftime('%Y年%-m月%-d日 %-H時%-M分') %></span>
                 </div>
                 <div>
-                  <%= image_tag post.get_image, size: '200x200' %>
+                  <%= image_tag post.get_image, class: 'index-post-img' %>
                 </div>
               </div>
               <br>
@@ -33,13 +33,13 @@
               </div>
             </div>
             <div class="d-flex justify-content-between">
-              <div>
-                <div>
-                  ♥<%= post.favorites.count %>いいね
-                </div>
+              <div class="col-6">
+                ♥<%= post.favorites.count %>いいね
               </div>
-              <div id="post_comments_<%= post.id %>">
-                <%= render 'admin/partial_template/admin_post_comments', post: post, post_comment: post_comment %>
+              <div class="col-">
+                <div id="post_comments_<%= post.id %> "class="text-break">
+                  <%= render 'admin/partial_template/admin_post_comments', post: post, post_comment: post_comment %>
+                </div>
               </div>
             </div>
           </div>
